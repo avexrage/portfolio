@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maulana Faris Sidqi - Portfolio</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts: Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #F5F5F0;
+            color: #000;
+            selection-background-color: #000;
+            selection-color: #fff;
+        }
+        
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Custom Selection Color */
+        ::selection {
+            background: black;
+            color: white;
+        }
+
+        /* Image hover effect */
+        .img-zoom-container {
+            overflow: hidden;
+        }
+        .img-zoom {
+            transition: transform 0.5s ease;
+        }
+        .group:hover .img-zoom {
+            transform: scale(1.02);
+        }
+    </style>
+</head>
+<body class="min-h-screen">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8 h-20 flex items-center justify-between">
+            <!-- Logo -->
+            <div class="text-xl font-bold tracking-tighter uppercase border-2 border-black px-2 py-1 bg-black text-white transform -rotate-2 hover:rotate-0 transition-transform cursor-pointer" onclick="window.scrollTo(0,0)">
+                MFS.
+            </div>
+
+            <!-- Desktop Links -->
+            <div class="hidden md:flex items-center space-x-8">
+                <button onclick="scrollToSection('work')" class="text-sm font-medium uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">Work</button>
+                <button onclick="scrollToSection('philosophy')" class="text-sm font-medium uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">Philosophy</button>
+                <button onclick="scrollToSection('education')" class="text-sm font-medium uppercase tracking-widest hover:underline decoration-2 underline-offset-4 transition-all">Education</button>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden" onclick="toggleMenu()">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-20 left-0 right-0 bg-[#F5F5F0] border-b border-black p-8 flex flex-col space-y-6 shadow-xl">
+            <button onclick="scrollToSection('work')" class="text-2xl font-bold uppercase tracking-tight text-left">Work</button>
+            <button onclick="scrollToSection('philosophy')" class="text-2xl font-bold uppercase tracking-tight text-left">Philosophy</button>
+            <button onclick="scrollToSection('education')" class="text-2xl font-bold uppercase tracking-tight text-left">Education</button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-4 md:px-8 max-w-[1400px] mx-auto border-l border-r border-black/10 min-h-screen flex flex-col justify-center">
+        <div class="space-y-6">
+            <div class="inline-flex items-center space-x-2 border border-black rounded-full px-4 py-1.5 text-xs font-bold uppercase tracking-widest bg-white">
+                <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+                <span>Available for New Projects</span>
+            </div>
+            
+            <h1 class="text-6xl md:text-8xl lg:text-9xl font-black uppercase tracking-tighter leading-[0.9]">
+                Maulana <br/>
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-black to-gray-600">Faris Sidqi</span>
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 pt-12 border-t border-black mt-12">
+                <div class="md:col-span-8">
+                    <p class="text-2xl md:text-4xl font-light leading-tight">
+                        Founder, Product Manager & UI/UX Designer bridging the gap between <span class="font-bold underline decoration-4 decoration-black/20">robust engineering</span> and <span class="font-bold underline decoration-4 decoration-black/20">seamless user experience</span>.
+                    </p>
+                </div>
+                <div class="md:col-span-4 flex flex-col justify-between space-y-8">
+                   <div class="space-y-2">
+                     <p class="text-sm uppercase tracking-widest text-gray-500">Targeting</p>
+                     <p class="font-medium">Laurea Magistrale in Digital Interaction Design <br/>Politecnico di Milano</p>
+                   </div>
+                   <div class="space-y-2">
+                     <p class="text-sm uppercase tracking-widest text-gray-500">Location</p>
+                     <p class="font-medium flex items-center gap-2"><i data-lucide="map-pin" class="w-4 h-4"></i> Wonosobo, Indonesia</p>
+                   </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="border-t border-black bg-white">
+        <div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-2">
+            <div class="p-8 md:p-16 border-b md:border-b-0 md:border-r border-black bg-black text-[#F5F5F0]">
+                <h2 class="text-4xl md:text-6xl font-black uppercase tracking-tighter mb-8">Statement<br/>of Intent</h2>
+                <i data-lucide="arrow-up-right" class="w-24 h-24 stroke-1 opacity-50"></i>
+            </div>
+            <div class="p-8 md:p-16 flex items-center">
+                <p class="text-lg md:text-xl leading-relaxed font-medium">
+                    "Passionate designer and entrepreneur dedicated to connecting with people through digital innovation. My professional philosophy is grounded in learning from the past while planning for the future. I aim to bridge the gap between robust engineering and seamless user experience, a goal I intend to further at Politecnico di Milano."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Project: Havengurt -->
+    <section id="work" class="border-t border-black">
+        <!-- Project Header -->
+        <div class="max-w-[1400px] mx-auto bg-[#E6E6E6]">
+            <div class="grid grid-cols-1 md:grid-cols-12 border-b border-black">
+                <div class="md:col-span-8 p-8 md:p-16 border-b md:border-b-0 md:border-r border-black">
+                    <span class="text-sm font-bold uppercase tracking-widest mb-4 block text-blue-600">Selected Project 2025</span>
+                    <h2 class="text-5xl md:text-7xl font-black uppercase tracking-tighter mb-6">Havengurt</h2>
+                    <p class="text-xl md:text-2xl font-light text-gray-800 max-w-2xl">
+                        A bespoke web platform establishing a direct-to-consumer sales channel for authentic Wonosobo yogurt products.
+                    </p>
+                </div>
+                <div class="md:col-span-4 p-8 md:p-16 flex flex-col justify-center space-y-6 bg-white">
+                    <div class="space-y-1">
+                        <p class="text-xs uppercase tracking-widest text-gray-500">Role</p>
+                        <p class="font-bold text-lg">Founder & Product Manager</p>
+                    </div>
+                    <div class="space-y-1">
+                        <p class="text-xs uppercase tracking-widest text-gray-500">Timeline</p>
+                        <p class="font-bold text-lg">Feb 2025 – Current</p>
+                    </div>
+                    <div class="pt-4">
+                        <a href="https://havengurt.com" target="_blank" class="inline-flex items-center gap-2 text-white bg-blue-600 px-6 py-3 rounded-full font-bold hover:bg-blue-700 transition-colors">
+                            Visit Live Site <i data-lucide="external-link" class="w-4 h-4"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Case Study Content Grid -->
+        <div class="max-w-[1400px] mx-auto bg-white">
+          
+            <!-- Section 1: Landing Page -->
+            <div class="grid grid-cols-1 md:grid-cols-2 border-b border-black group">
+                <div class="p-8 md:p-16 space-y-8 order-2 md:order-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-bold">01</span>
+                        <h3 class="text-2xl font-bold uppercase">The Landing Page</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i data-lucide="layout" class="w-4 h-4"></i> Visual Hierarchy & Value</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Prioritized the headline "Fresh Yogurt Made From Real Fruit" over the brand name to reduce cognitive load. If users understand the value instantly, they are more likely to convert.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Brand Consistency</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                The "Pre-Order Now" button utilizes the primary brand blue to create a strong CTA aligning with the logo identity.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Differentiation</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Placed "100% Natural & Homemade" as a pre-attentive attribute above the headline, signaling uniqueness before the user even reads the main text.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+             
+                <!-- Visual: Landing Page Image -->
+                <div class="bg-gray-100 p-4 border-l border-black flex items-center justify-center order-1 md:order-2 group-hover:bg-blue-50 transition-colors">
+                    <div class="w-full relative img-zoom-container rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black">
+                        <!-- Replace src with your actual image path -->
+                        <img src="hero.png" alt="Havengurt Landing Page" class="w-full h-auto block img-zoom">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 2: Transparency & Trust -->
+            <div class="grid grid-cols-1 md:grid-cols-2 border-b border-black group">
+                <!-- Visual: Transparency Image -->
+                <div class="bg-gray-100 p-4 border-r border-black flex items-center justify-center group-hover:bg-green-50 transition-colors">
+                    <div class="w-full relative img-zoom-container rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black bg-white">
+                        <img src="science.png" alt="Nutritional Data Visualization" class="w-full h-auto block img-zoom">
+                    </div>
+                </div>
+
+                <div class="p-8 md:p-16 space-y-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-bold">02</span>
+                        <h3 class="text-2xl font-bold uppercase">Transparency & Trust</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i data-lucide="bar-chart-3" class="w-4 h-4"></i> Data Visualization</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Replaced dense tables with horizontal progress bars. This leverages pre-attentive processing, allowing users to grasp nutritional density (e.g., High Calcium) instantly.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Function-Oriented UX</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Introduced functional tags like "Bone Health" and "Immunity Boost", translating Flavor into Benefit to help users decide based on health goals.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">External Validation</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Cited specific lab verification (Chem-Mix Pratama) to transform the "homemade" perception from a potential risk into a verified strength.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Product Display -->
+            <div class="grid grid-cols-1 md:grid-cols-2 border-b border-black group">
+                <div class="p-8 md:p-16 space-y-8 order-2 md:order-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-bold">03</span>
+                        <h3 class="text-2xl font-bold uppercase">Product Display</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i data-lucide="shopping-bag" class="w-4 h-4"></i> Information Architecture</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Organized catalog by consumption method (Drink, Scoop, Ice Lolly) rather than flavor. This matches the user's mental model of form-factor first.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Contextual Photography</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Used environmental photography (bottles in fridges, cups on ice) to visually communicate freshness and temperature, creating a sensory connection.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Interaction Design</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                "See More" utilizes progressive disclosure, reducing main page clutter while inviting deeper engagement with product lines.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+             
+                <!-- Visual: Product Categories -->
+                <div class="bg-gray-100 p-4 border-l border-black flex items-center justify-center order-1 md:order-2 group-hover:bg-yellow-50 transition-colors">
+                     <div class="w-full relative img-zoom-container rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black bg-white">
+                        <img src="ourproducts.png" alt="Product Categories Display" class="w-full h-auto block img-zoom">
+                     </div>
+                </div>
+            </div>
+
+            <!-- Section 4: Narrative & Localization -->
+            <div class="grid grid-cols-1 md:grid-cols-2 border-b border-black group">
+                <!-- Visual: Story & Footer Stacked -->
+                <div class="bg-gray-100 p-4 border-r border-black flex flex-col items-center justify-center gap-4 group-hover:bg-purple-50 transition-colors">
+                    <!-- Partner Image -->
+                    <div class="w-full relative img-zoom-container rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black bg-white">
+                        <img src="ourstory.png" alt="Our Story and Partners" class="w-full h-auto block img-zoom">
+                    </div>
+                    <!-- Distance/Footer Image -->
+                    <div class="w-full relative img-zoom-container rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black bg-white">
+                        <img src="footer.png" alt="Footer and Distance Awareness" class="w-full h-auto block img-zoom">
+                    </div>
+                </div>
+
+                <div class="p-8 md:p-16 space-y-8">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-bold">04</span>
+                        <h3 class="text-2xl font-bold uppercase">Narrative Strategy</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i data-lucide="heart" class="w-4 h-4"></i> Brand Humanization</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Explicitly mentioned the brand's origins as a high school project. This frames the product as a passion project, deepening the emotional connection.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Bridging Online & Offline</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Utilized actual photographs of partner storefronts (Djawa Snack) rather than generic icons. This acts as social proof and aids physical wayfinding.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Distance Awareness</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Designed a prominent "Can't find us?" card. This interactive component ensures geographic distance doesn't result in missed opportunities by directing users to pre-order online.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 5: The Conversion Destination (NEW) -->
+            <div class="grid grid-cols-1 md:grid-cols-2 border-b border-black group">
+                <div class="p-8 md:p-16 space-y-8 order-2 md:order-1">
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white text-sm font-bold">05</span>
+                        <h3 class="text-2xl font-bold uppercase">Conversion Destination</h3>
+                    </div>
+                    
+                    <div class="space-y-6">
+                        <div>
+                            <h4 class="font-bold text-lg mb-2 flex items-center gap-2"><i data-lucide="mouse-pointer-click" class="w-4 h-4"></i> Filtering & Findability</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Implemented a sticky tab-filter mechanism (Drink, Scoop, Ice Lolly) allowing users to switch instantly, reducing friction for repeat buyers.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Managing Expectations</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Used specific microcopy "Add to Pre-order" instead of generic "Buy". This transparently communicates lead times, crucial for a homemade business model.
+                            </p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-lg mb-2">Visual Clarity</h4>
+                            <p class="text-gray-600 leading-relaxed">
+                                Card design places price and product name at the same hierarchy level to facilitate quick comparison scanning without requiring a click-through.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+             
+                <!-- Visual: Conversion/Product Grid -->
+                <div class="bg-gray-100 p-4 border-l border-black flex items-center justify-center order-1 md:order-2 group-hover:bg-red-50 transition-colors">
+                     <div class="w-full relative img-zoom-container rounded-xl shadow-[8px_8px_0px_0px_rgba(0,0,0,1)] border-2 border-black bg-white">
+                        <img src="products.png" alt="Product Conversion Grid" class="w-full h-auto block img-zoom">
+                     </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Thesis Abstract -->
+    <section class="bg-[#111] text-[#F5F5F0] border-t border-black py-20">
+        <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+           <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+              <div class="md:col-span-4 border-l-2 border-white/20 pl-6">
+                 <h3 class="text-sm font-bold uppercase tracking-widest text-gray-400 mb-2">Academic Research</h3>
+                 <h2 class="text-3xl font-bold leading-tight">Registration System for Wredha Mulya Foundation</h2>
+                 <p class="mt-4 text-gray-400">Thesis Project</p>
+              </div>
+              <div class="md:col-span-8">
+                 <p class="text-lg leading-relaxed text-gray-300 mb-6">
+                    "Developed an information system for the Day Care and Wisma Registration Program. The system addresses the lack of digital infrastructure that required elderly people to travel for basic information. Using the waterfall method, I built a platform that allows online registration and information access, successfully passing all 37 black-box testing scenarios with 100% reliability."
+                 </p>
+                 <div class="flex flex-wrap gap-2">
+                    <span class="px-3 py-1 border border-white/30 rounded-full text-xs uppercase tracking-wide">Information Systems</span>
+                    <span class="px-3 py-1 border border-white/30 rounded-full text-xs uppercase tracking-wide">Web Development</span>
+                    <span class="px-3 py-1 border border-white/30 rounded-full text-xs uppercase tracking-wide">Waterfall</span>
+                    <span class="px-3 py-1 border border-white/30 rounded-full text-xs uppercase tracking-wide">Black-box Testing</span>
+                 </div>
+              </div>
+           </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="bg-white border-t border-black py-20">
+         <div class="max-w-[1400px] mx-auto px-4 md:px-8">
+            <h2 class="text-4xl font-black uppercase tracking-tighter mb-12">Education</h2>
+            
+            <div class="space-y-8">
+               <div class="group border-b border-black pb-8 hover:bg-gray-50 transition-colors p-4 -mx-4 rounded-lg cursor-default">
+                  <div class="flex flex-col md:flex-row justify-between md:items-start gap-4">
+                     <div>
+                        <h3 class="text-2xl font-bold">University of Technology Yogyakarta</h3>
+                        <p class="text-gray-600">Bachelor Degree of Information System</p>
+                        <p class="text-sm text-gray-500 mt-2">GPA: 3.56 / 4.00</p>
+                     </div>
+                     <div class="text-right">
+                        <p class="font-mono font-bold">Sep 2020 - Sep 2024</p>
+                     </div>
+                  </div>
+               </div>
+
+               <div class="group border-b border-black pb-8 hover:bg-gray-50 transition-colors p-4 -mx-4 rounded-lg cursor-default">
+                  <div class="flex flex-col md:flex-row justify-between md:items-start gap-4">
+                     <div>
+                        <h3 class="text-2xl font-bold">Google UX Design Professional</h3>
+                        <p class="text-gray-600">Coursera Certification</p>
+                        <p class="text-sm text-gray-500 mt-2">Focus: UX Design, UI Design, Interaction Design (IxD)</p>
+                     </div>
+                     <div class="text-right">
+                        <p class="font-mono font-bold">Jun 2025 - Current</p>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+    </section>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Icons
+        lucide.createIcons();
+
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('bg-[#F5F5F0]/90', 'backdrop-blur-md', 'border-b', 'border-black');
+            } else {
+                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('bg-[#F5F5F0]/90', 'backdrop-blur-md', 'border-b', 'border-black');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const mobileMenu = document.getElementById('mobile-menu');
+        const menuIcon = document.getElementById('menu-icon');
+        let isMenuOpen = false;
+
+        function toggleMenu() {
+            isMenuOpen = !isMenuOpen;
+            if (isMenuOpen) {
+                mobileMenu.classList.remove('hidden');
+                menuIcon.setAttribute('data-lucide', 'x');
+            } else {
+                mobileMenu.classList.add('hidden');
+                menuIcon.setAttribute('data-lucide', 'menu');
+            }
+            lucide.createIcons(); // Re-render icon
+        }
+
+        // Smooth Scroll Function
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+                // Close menu if open
+                if (isMenuOpen) toggleMenu();
+            }
+        }
+    </script>
+</body>
+</html>
