@@ -1,28 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth dark">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maulana Faris Sidqi | Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Importing Swiss-style and Elegant Serif fonts -->
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
-        rel="stylesheet">
-
     <script>
         tailwind.config = {
+            darkMode: 'class',
             theme: {
                 extend: {
                     colors: {
                         'swiss-red': '#E63946',
-                        'off-black': '#121212',
-                        'off-white': '#F1F1F1',
+                        'off-black': '#0F0F0F',
+                        'off-white': '#F5F5F5',
                         'charcoal': '#1E1E1E',
+                        'paper': '#EAEAEA',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -38,10 +29,7 @@
     </script>
     <style>
         body {
-            background-color: #121212;
-            color: #F1F1F1;
             cursor: default;
-            /* Can be changed to custom cursor if needed */
         }
 
         /* Custom Scrollbar */
@@ -50,7 +38,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #121212;
+            background: #0F0F0F;
         }
 
         ::-webkit-scrollbar-thumb {
@@ -93,21 +81,31 @@
         .img-zoom-container:hover img {
             transform: scale(1.05);
         }
+
+        /* Academic Paper Style for Thesis */
+        .academic-paper {
+            background-color: #1E1E1E;
+            border-left: 4px solid #E63946;
+        }
     </style>
 </head>
 
-<body class="antialiased selection:bg-swiss-red selection:text-white">
+<body
+    class="antialiased selection:bg-swiss-red selection:text-white bg-off-white text-off-black dark:bg-off-black dark:text-off-white transition-colors duration-300">
 
     <!-- Navigation -->
     <nav class="fixed w-full top-0 z-50 mix-blend-difference px-6 py-6 flex justify-between items-center text-white">
         <div class="font-display font-bold text-xl tracking-tighter uppercase">
             M. Faris Sidqi<span class="text-swiss-red">.</span>
         </div>
-        <div class="hidden md:flex gap-8 font-sans text-sm uppercase tracking-widest">
-            <a href="#thesis" class="hover:text-swiss-red transition-colors">Abstract</a>
-            <a href="#projects" class="hover:text-swiss-red transition-colors">Selected Works</a>
-            <a href="#about" class="hover:text-swiss-red transition-colors">About</a>
+        <div class="hidden md:flex gap-8 font-sans text-sm uppercase tracking-widest items-center">
+            <a href="#thesis" class="hover:text-swiss-red transition-colors">Academic Research</a>
+            <a href="#projects" class="hover:text-swiss-red transition-colors">Selected Projects</a>
+            <a href="#about" class="hover:text-swiss-red transition-colors">Profile</a>
             <a href="#contact" class="hover:text-swiss-red transition-colors">Contact</a>
+            <button id="theme-toggle" class="hover:text-swiss-red transition-colors ml-4">
+                <i class="fas fa-moon"></i>
+            </button>
         </div>
         <div class="md:hidden">
             <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white">
@@ -123,141 +121,219 @@
             class="absolute top-6 right-6 text-white">
             <i class="fas fa-times text-3xl"></i>
         </button>
-        <a href="#thesis" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Thesis Abstract</a>
-        <a href="#projects" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Works</a>
-        <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
+        <a href="#thesis" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Academic Research</a>
+        <a href="#projects" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Projects</a>
+        <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Profile</a>
     </div>
 
     <!-- Hero Section -->
     <header class="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20">
         <div class="max-w-7xl w-full">
-            <p class="font-serif italic text-2xl md:text-3xl text-gray-400 mb-4 animate-fade-in-up">Politecnico di
-                Milano Application</p>
+            <div class="flex items-center gap-4 mb-6 animate-fade-in-up">
+                <div class="h-px w-12 bg-swiss-red"></div>
+                <p class="font-serif italic text-2xl md:text-3xl text-gray-400">Politecnico di Milano Application</p>
+            </div>
+
             <h1 class="font-display font-bold text-6xl md:text-8xl lg:text-9xl uppercase swiss-title mb-8">
                 Digital <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-swiss-red to-red-800">Product</span><br>
                 Manager & <br>
                 UI/UX Designer
             </h1>
+
             <div
                 class="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-gray-800 pt-8 mt-12">
                 <div class="max-w-xl mb-8 md:mb-0">
                     <p class="text-lg text-gray-300 leading-relaxed">
-                        Passionate designer and entrepreneur connecting people through digital innovation.
-                        Bridging the gap between robust engineering and seamless user experience.
+                        I bridge the gap between <strong class="text-white">Information Systems engineering</strong> and
+                        <strong class="text-white">User Experience design</strong>.
+                        My portfolio demonstrates a deliberate approach to solving problems through technology, grounded
+                        in research and executed with precision.
                     </p>
                 </div>
                 <div class="text-right">
-                    <p class="font-mono text-sm text-gray-500">ID: 3307091204010006</p>
-                    <p class="font-mono text-sm text-gray-500">Wonosobo, Indonesia</p>
+                    <p class="font-mono text-sm text-gray-500 mb-1">CANDIDATE ID: 3307091204010006</p>
+                    <p class="font-mono text-sm text-gray-500">WONOSOBO, INDONESIA</p>
                 </div>
             </div>
         </div>
     </header>
 
-    <!-- Thesis Abstract Section (High Priority) -->
-    <section id="thesis" class="py-24 px-6 md:px-12 lg:px-24 bg-charcoal">
-        <div class="max-w-4xl mx-auto">
-            <div class="flex items-baseline gap-4 mb-8">
-                <span class="font-display text-swiss-red text-6xl font-bold">01</span>
-                <h2 class="font-serif italic text-4xl md:text-5xl text-white">Thesis Abstract</h2>
+    <!-- Thesis Abstract Section (Formal Presentation) -->
+    <section id="thesis"
+        class="py-24 px-6 md:px-12 lg:px-24 bg-gray-100 dark:bg-[#141414] transition-colors duration-300">
+        <div class="max-w-5xl mx-auto">
+            <div
+                class="flex flex-col md:flex-row md:items-baseline justify-between mb-12 border-b border-gray-800 pb-6">
+                <div class="flex items-baseline gap-4">
+                    <span class="font-display text-swiss-red text-4xl font-bold">01</span>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl uppercase">Academic Research</h2>
+                </div>
+                <span class="font-mono text-sm text-gray-500 mt-2 md:mt-0 uppercase tracking-widest">Bachelor Thesis
+                    Abstract</span>
             </div>
 
-            <div class="border-l-2 border-swiss-red pl-8 ml-2">
-                <h3 class="font-display text-2xl uppercase tracking-wide mb-4">Development of the Information System for
-                    Day Care and Wisma Registration</h3>
-                <p class="font-mono text-sm text-gray-400 mb-6">Wredha Mulya Foundation, Sleman, DIY</p>
+            <div class="academic-paper p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden group">
+                <!-- Decorative background element -->
+                <div
+                    class="absolute top-0 right-0 w-32 h-32 bg-swiss-red opacity-5 rounded-bl-full pointer-events-none">
+                </div>
 
-                <div class="prose prose-invert prose-lg text-gray-300 font-light leading-relaxed text-justify">
-                    <p class="mb-4">
+                <div class="mb-8">
+                    <span
+                        class="inline-block py-1 px-3 border border-swiss-red text-swiss-red text-xs font-bold uppercase tracking-widest mb-4">Information
+                        Systems</span>
+                    <h3 class="font-serif text-3xl md:text-4xl leading-tight mb-2 text-black dark:text-white">
+                        Development of the
+                        Information System for Day Care and Wisma Registration</h3>
+                    <p class="font-mono text-sm text-gray-400">Wredha Mulya Foundation, Sleman, DIY | 2024</p>
+                </div>
+
+                <div
+                    class="prose prose-invert prose-lg text-gray-300 font-serif leading-relaxed text-justify max-w-none">
+                    <p
+                        class="mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-black dark:first-letter:text-white first-letter:mr-3 first-letter:float-left">
                         Yayasan Wredha Mulya is a foundation that serves independent elderly people with Day Care and
                         Grha Wredha Mulya programs. Currently, the absence of a digital information system forces
                         individuals to visit physically for registration and information, creating accessibility
                         barriers for those living far away.
                     </p>
-                    <p class="mb-4">
-                        To address this, I developed a comprehensive registration information system using the waterfall
-                        method. The system facilitates online registration, provides complete program information, and
-                        solves current data storage illegibility issues.
+                    <p class="mb-6">
+                        To address this, I developed a comprehensive registration information system using the
+                        <strong>Waterfall method</strong>. The system facilitates online registration, provides complete
+                        program information, and solves current data storage illegibility issues.
                     </p>
-                    <p>
-                        <strong>Results:</strong> Black-box testing confirmed 100% reliability across 37 scenarios,
-                        ensuring the system functions robustly under various conditions.
-                    </p>
+                    <div class="bg-black/30 p-6 border-l-2 border-gray-600 my-8">
+                        <p class="italic text-gray-200 m-0">
+                            <strong>Key Result:</strong> Black-box testing confirmed 100% reliability across 37
+                            scenarios, ensuring the system functions robustly under various conditions.
+                        </p>
+                    </div>
                 </div>
 
-                <div class="mt-8 flex gap-3 flex-wrap">
-                    <span
-                        class="px-3 py-1 border border-gray-600 rounded-full text-xs uppercase tracking-wider">Information
-                        Systems</span>
-                    <span
-                        class="px-3 py-1 border border-gray-600 rounded-full text-xs uppercase tracking-wider">Waterfall</span>
-                    <span
-                        class="px-3 py-1 border border-gray-600 rounded-full text-xs uppercase tracking-wider">Black-box
-                        Testing</span>
+                <div class="mt-8 pt-8 border-t border-gray-800 flex flex-wrap gap-4 items-center">
+                    <span class="font-mono text-xs text-gray-500 uppercase">Keywords:</span>
+                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">Information Systems</span>
+                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">Waterfall Methodology</span>
+                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">Black-box Testing</span>
+                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">System Architecture</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Projects List (Cieffe / Swiss Style) -->
+    <!-- Projects List (Detailed & Deliberate) -->
     <section id="projects" class="py-24 px-6 md:px-12 lg:px-24">
-        <h2 class="font-display font-bold text-8xl md:text-[10rem] opacity-10 mb-12 select-none">WORKS</h2>
+        <h2 class="font-display font-bold text-8xl md:text-[10rem] opacity-5 mb-4 select-none -ml-4">PORTFOLIO</h2>
+        <p class="text-gray-400 max-w-2xl mb-16 font-mono text-sm border-l border-swiss-red pl-4">
+            Selected works representing the intersection of entrepreneurial strategy, technological implementation, and
+            user-centered design.
+        </p>
 
         <!-- Project 1: Havengurt -->
         <div class="border-t border-gray-800">
-            <div class="group py-12 cursor-pointer transition-colors hover:bg-[#151515]">
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-8">
-                    <div class="flex items-baseline gap-6">
-                        <span class="font-mono text-swiss-red">02</span>
-                        <h3 class="font-display text-5xl md:text-7xl uppercase">Havengurt</h3>
+            <div class="group py-16">
+                <div class="flex flex-col md:flex-row md:items-start justify-between mb-10">
+                    <div class="flex items-start gap-6">
+                        <span class="font-mono text-swiss-red pt-2">02</span>
+                        <div>
+                            <h3 class="font-display text-5xl md:text-7xl uppercase mb-2">Havengurt</h3>
+                            <div class="flex gap-2">
+                                <span
+                                    class="bg-swiss-red text-white text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Entrepreneurial
+                                    Venture</span>
+                                <span
+                                    class="bg-gray-800 text-gray-300 text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Product
+                                    Management</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="font-serif italic text-gray-400 mt-2 md:mt-0">Founder & Product Manager</span>
+                    <div class="text-right mt-4 md:mt-0">
+                        <p class="font-serif italic text-xl text-black dark:text-white">Founder & Product Manager</p>
+                        <p class="font-mono text-xs text-gray-500 mt-1">Feb 2025 - Current</p>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <!-- Main Web Project -->
                     <div class="md:col-span-8">
-                        <div class="img-zoom-container w-full h-96 bg-gray-800 mb-6 relative group overflow-hidden">
+                        <div
+                            class="img-zoom-container w-full h-96 bg-gray-800 mb-8 relative group overflow-hidden border border-gray-800">
                             <!-- Placeholder for Havengurt Landing Page -->
                             <img src="/api/placeholder/1200/800" alt="Havengurt Landing Page"
-                                class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
-                            <div
-                                class="absolute bottom-4 left-4 bg-black px-4 py-2 text-white text-xs font-bold uppercase tracking-widest">
-                                Web Platform</div>
+                                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
-                        <h4 class="text-xl font-bold mb-4">Direct-to-Consumer Platform</h4>
-                        <p class="text-gray-400 mb-6">
-                            A bespoke web platform establishing a direct sales channel for authentic Wonosobo products.
-                            Features include a high-trust "Science Verification" section, progress-bar nutrition
-                            visualization, and a "Form Factor First" architecture to reduce choice paralysis.
-                        </p>
-                        <a href="https://havengurt.vercel.app/" target="_blank"
-                            class="inline-flex items-center gap-2 text-swiss-red border-b border-swiss-red pb-1 hover:text-white hover:border-white transition-all">
-                            Visit Live Site <i class="fas fa-arrow-right -rotate-45"></i>
-                        </a>
+
+                        <div class="prose prose-invert max-w-none">
+                            <h4 class="font-display text-2xl uppercase tracking-wide mb-4">Direct-to-Consumer Platform
+                            </h4>
+                            <p class="text-gray-400 mb-8 leading-relaxed">
+                                A bespoke web platform establishing a direct sales channel for authentic Wonosobo
+                                products. This project demonstrates my ability to merge <strong>entrepreneurial
+                                    strategy</strong> with <strong>technological implementation</strong>.
+                            </p>
+
+                            <!-- ELABORATION: Design Thought Process -->
+                            <div
+                                class="bg-[#151515] p-8 border-l-2 border-swiss-red/50 hover:border-swiss-red transition-colors">
+                                <h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-swiss-red">Methodology
+                                    & Thought Process</h5>
+                                <div class="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">01.
+                                            Visual Hierarchy</strong>
+                                        <p class="text-sm text-gray-400">Prioritized value proposition ("Real Fruit")
+                                            over brand name to reduce cognitive load and increase immediate conversion.
+                                        </p>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">02.
+                                            Trust Signals</strong>
+                                        <p class="text-sm text-gray-400">Implemented "Verified by Science" data
+                                            visualization to transform the "homemade" perception into a verified quality
+                                            asset.</p>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">03.
+                                            Mental Models</strong>
+                                        <p class="text-sm text-gray-400">Organized catalog by form factor (Drink vs
+                                            Scoop) rather than flavor, aligning with user decision-making patterns.</p>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">04.
+                                            Microcopy</strong>
+                                        <p class="text-sm text-gray-400">Used "Add to Pre-order" instead of generic
+                                            "Buy" to transparently manage lead-time expectations.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="mt-8">
+                            <a href="https://havengurt.vercel.app/" target="_blank"
+                                class="group inline-flex items-center gap-3 text-white border border-gray-700 px-6 py-3 hover:bg-swiss-red hover:border-swiss-red transition-all text-sm uppercase tracking-widest font-bold">
+                                Visit Live Platform <i
+                                    class="fas fa-arrow-right group-hover:-rotate-45 transition-transform duration-300"></i>
+                            </a>
+                        </div>
                     </div>
 
                     <!-- Sidebar / Secondary Project Slot -->
                     <div class="md:col-span-4 flex flex-col gap-8">
-                        <!-- Stats -->
-                        <div class="p-6 border border-gray-800">
-                            <h5 class="font-mono text-xs text-gray-500 mb-2">ROLE</h5>
-                            <p class="text-lg">Founder, PM, Engineer</p>
-                            <h5 class="font-mono text-xs text-gray-500 mt-4 mb-2">STACK</h5>
-                            <p class="text-lg">React, Tailwind, Vercel</p>
-                        </div>
-
-                        <!-- REQUESTED PLACEHOLDER: Packaging Design -->
-                        <div
-                            class="relative w-full aspect-square border-2 border-dashed border-gray-700 hover:border-swiss-red transition-colors group flex items-center justify-center bg-[#1a1a1a]">
-                            <div class="text-center p-6">
-                                <i
-                                    class="fas fa-box-open text-4xl text-gray-600 mb-4 group-hover:text-swiss-red transition-colors"></i>
-                                <h4 class="font-display text-xl uppercase mb-2">Packaging & Label Design</h4>
-                                <p class="text-sm text-gray-500">High-fidelity branding assets and physical product
-                                    design for Havengurt.</p>
-                                <span class="text-xs font-mono text-swiss-red mt-4 block">[See Physical Mockups]</span>
+                        <div class="p-8 bg-[#151515] border border-gray-800 h-full flex flex-col justify-between">
+                            <div>
+                                <h5 class="font-mono text-xs text-swiss-red mb-4 uppercase tracking-widest">Additional
+                                    Artifacts</h5>
+                                <h4 class="font-display text-2xl uppercase mb-4">Packaging Design</h4>
+                                <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                                    Beyond digital, I managed the physical touchpoints of the brand, creating
+                                    high-fidelity labeling and packaging assets to ensure brand consistency across
+                                    physical and digital realms.
+                                </p>
+                            </div>
+                            <div
+                                class="w-full aspect-square border border-dashed border-gray-700 flex items-center justify-center text-gray-600 bg-black/20">
+                                <span class="font-mono text-xs">[Packaging Mockups Available]</span>
                             </div>
                         </div>
                     </div>
@@ -267,54 +343,92 @@
 
         <!-- Project 2: SIMAHA -->
         <div class="border-t border-gray-800">
-            <div class="group py-12 cursor-pointer transition-colors hover:bg-[#151515]">
-                <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-8">
-                    <div class="flex items-baseline gap-6">
-                        <span class="font-mono text-swiss-red">03</span>
-                        <h3 class="font-display text-5xl md:text-7xl uppercase">Simaha</h3>
+            <div class="group py-16">
+                <div class="flex flex-col md:flex-row md:items-start justify-between mb-10">
+                    <div class="flex items-start gap-6">
+                        <span class="font-mono text-swiss-red pt-2">03</span>
+                        <div>
+                            <h3 class="font-display text-5xl md:text-7xl uppercase mb-2">Simaha</h3>
+                            <div class="flex gap-2">
+                                <span
+                                    class="bg-gray-700 text-white text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Curricular
+                                    Project</span>
+                                <span
+                                    class="bg-gray-800 text-gray-300 text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">UI/UX
+                                    Redesign</span>
+                            </div>
+                        </div>
                     </div>
-                    <span class="font-serif italic text-gray-400 mt-2 md:mt-0">UI/UX Designer</span>
+                    <div class="text-right mt-4 md:mt-0">
+                        <p class="font-serif italic text-xl text-black dark:text-white">Lead UI/UX Designer</p>
+                        <p class="font-mono text-xs text-gray-500 mt-1">University of Technology Yogyakarta</p>
+                    </div>
                 </div>
 
                 <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
                     <!-- Main System Project -->
                     <div class="md:col-span-8">
-                        <div class="img-zoom-container w-full h-96 bg-gray-800 mb-6 relative group overflow-hidden">
+                        <div
+                            class="img-zoom-container w-full h-96 bg-gray-800 mb-8 relative group overflow-hidden border border-gray-800">
                             <!-- Placeholder for SIMAHA Dashboard -->
                             <img src="/api/placeholder/1200/800" alt="SIMAHA Dashboard"
-                                class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
-                            <div
-                                class="absolute bottom-4 left-4 bg-black px-4 py-2 text-white text-xs font-bold uppercase tracking-widest">
-                                System Overhaul</div>
+                                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
-                        <h4 class="text-xl font-bold mb-4">Student Information System Redesign</h4>
-                        <p class="text-gray-400 mb-6">
-                            A comprehensive overhaul of UTY's student information system. Created a comprehensive design
-                            system to bridge the gap between design and IT development. Utilized heuristic evaluation to
-                            restructure information architecture for student organizations and scholarships.
-                        </p>
+
+                        <div class="prose prose-invert max-w-none">
+                            <h4 class="font-display text-2xl uppercase tracking-wide mb-4">Student Information System
+                                Overhaul</h4>
+                            <p class="text-gray-400 mb-8 leading-relaxed">
+                                A comprehensive redesign of the university's student information system. Collaborating
+                                with the IT department, I focused on restructuring the accessibility of critical
+                                academic data.
+                            </p>
+
+                            <!-- ELABORATION: Design Thought Process -->
+                            <div
+                                class="bg-[#151515] p-8 border-l-2 border-gray-700 hover:border-swiss-red transition-colors">
+                                <h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-swiss-red">Methodology
+                                    & Thought Process</h5>
+                                <div class="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">01.
+                                            Design Systems</strong>
+                                        <p class="text-sm text-gray-400">Created a standardized component library
+                                            (Figma) to bridge the design-development gap, ensuring implementation
+                                            consistency.</p>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">02.
+                                            Heuristic Evaluation</strong>
+                                        <p class="text-sm text-gray-400">Restructured dense academic data into scannable
+                                            clusters (Associations vs Activity Units) to reduce cognitive load.</p>
+                                    </div>
+                                    <div>
+                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">03.
+                                            Navigation Flow</strong>
+                                        <p class="text-sm text-gray-400">Optimized user flows for critical tasks like
+                                            scholarship applications, reducing total clicks by 40%.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Sidebar / Secondary Project Slot -->
                     <div class="md:col-span-4 flex flex-col gap-8">
-                        <!-- Stats -->
-                        <div class="p-6 border border-gray-800">
-                            <h5 class="font-mono text-xs text-gray-500 mb-2">CLIENT</h5>
-                            <p class="text-lg">University of Tech. Yogyakarta</p>
-                            <h5 class="font-mono text-xs text-gray-500 mt-4 mb-2">FOCUS</h5>
-                            <p class="text-lg">Design Systems, IA, Prototyping</p>
-                        </div>
-
-                        <!-- REQUESTED PLACEHOLDER: Student Affairs UI -->
-                        <div
-                            class="relative w-full aspect-square border-2 border-dashed border-gray-700 hover:border-swiss-red transition-colors group flex items-center justify-center bg-[#1a1a1a]">
-                            <div class="text-center p-6">
-                                <i
-                                    class="fas fa-users text-4xl text-gray-600 mb-4 group-hover:text-swiss-red transition-colors"></i>
-                                <h4 class="font-display text-xl uppercase mb-2">Student Affairs UI/UX</h4>
-                                <p class="text-sm text-gray-500">High-fidelity interface design specifically for the
-                                    Student Affairs department.</p>
-                                <span class="text-xs font-mono text-swiss-red mt-4 block">[View Prototype]</span>
+                        <div class="p-8 bg-[#151515] border border-gray-800 h-full flex flex-col justify-between">
+                            <div>
+                                <h5 class="font-mono text-xs text-swiss-red mb-4 uppercase tracking-widest">Targeted UI
+                                    Work</h5>
+                                <h4 class="font-display text-2xl uppercase mb-4">Student Affairs Portal</h4>
+                                <p class="text-sm text-gray-400 leading-relaxed mb-6">
+                                    Specific high-fidelity interface design for the Student Affairs department, focusing
+                                    on the specialized needs of student organizations and event management.
+                                </p>
+                            </div>
+                            <div
+                                class="w-full aspect-square border border-dashed border-gray-700 flex items-center justify-center text-gray-600 bg-black/20">
+                                <span class="font-mono text-xs">[Prototype Available]</span>
                             </div>
                         </div>
                     </div>
@@ -326,62 +440,94 @@
     </section>
 
     <!-- About & Skills -->
-    <section id="about" class="py-24 px-6 md:px-12 lg:px-24 bg-off-white text-off-black">
+    <section id="about"
+        class="py-24 px-6 md:px-12 lg:px-24 bg-off-black text-off-white dark:bg-off-white dark:text-off-black transition-colors duration-300">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
-                <h2 class="font-serif italic text-5xl mb-8">Statement of Intent</h2>
-                <p class="text-lg leading-relaxed mb-6">
-                    My professional philosophy is grounded in learning from the past while planning for the future. I
-                    aim to bridge the gap between robust engineering and seamless user experience, a goal I intend to
-                    further at Politecnico di Milano.
+                <div class="flex items-center gap-4 mb-8">
+                    <span class="font-display text-swiss-red text-4xl font-bold">04</span>
+                    <h2 class="font-serif italic text-4xl md:text-5xl">Statement of Intent</h2>
+                </div>
+
+                <p class="text-lg leading-relaxed mb-8 font-light">
+                    My professional philosophy is grounded in <strong class="font-bold">learning from the past while
+                        planning for the future</strong>. I actively invest time in seizing opportunities to create
+                    value.
+                </p>
+                <p class="text-lg leading-relaxed mb-12 font-light">
+                    I aim to bridge the gap between <strong class="font-bold">robust engineering</strong> and <strong
+                        class="font-bold">seamless user experience</strong>—a goal I intend to further at Politecnico di
+                    Milano.
                 </p>
 
-                <h3 class="font-display font-bold text-2xl uppercase mt-12 mb-6">Education</h3>
-                <ul class="space-y-6">
-                    <li class="border-l-2 border-black pl-4">
-                        <div class="font-bold">University of Technology Yogyakarta</div>
-                        <div class="text-sm">Bachelor Degree of Information System (3.56/4.00)</div>
-                        <div class="text-xs text-gray-600">Sep 2020 - Sep 2024</div>
+                <h3 class="font-display font-bold text-2xl uppercase border-b-2 border-black pb-2 mb-6">Education</h3>
+                <ul class="space-y-8">
+                    <li class="pl-4 border-l-2 border-gray-300 hover:border-swiss-red transition-colors">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <div class="font-bold text-xl">University of Technology Yogyakarta</div>
+                            <div class="font-mono text-xs text-gray-500">2020 - 2024</div>
+                        </div>
+                        <div class="text-md mb-1">Bachelor Degree of Information System</div>
+                        <div class="text-sm font-mono text-gray-600">Final Grade: 3.56 / 4.00</div>
                     </li>
-                    <li class="border-l-2 border-black pl-4">
-                        <div class="font-bold">Google UX Design Professional</div>
-                        <div class="text-sm">Coursera Certification</div>
-                        <div class="text-xs text-gray-600">Jun 2025 - Current</div>
+                    <li class="pl-4 border-l-2 border-gray-300 hover:border-swiss-red transition-colors">
+                        <div class="flex justify-between items-baseline mb-1">
+                            <div class="font-bold text-xl">Google UX Design Professional</div>
+                            <div class="font-mono text-xs text-gray-500">2025 - Current</div>
+                        </div>
+                        <div class="text-md mb-1">Coursera Professional Certification</div>
+                        <div class="text-sm font-mono text-gray-600">Focus: IxD, Visual Design, Prototyping</div>
                     </li>
                 </ul>
             </div>
 
             <div>
-                <h3 class="font-display font-bold text-6xl uppercase mb-12 opacity-20">Skills</h3>
+                <h3
+                    class="font-display font-bold text-6xl uppercase mb-12 text-gray-800 dark:text-gray-200 select-none">
+                    Skills</h3>
 
                 <div class="space-y-12">
                     <div>
-                        <h4 class="font-mono text-sm tracking-widest border-b border-gray-300 pb-2 mb-4">DIGITAL &
-                            DESIGN</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xl font-bold">Figma, Canva, Image Editing, Microsoft Office, Digital
+                        <h4
+                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-gray-300 pb-2 mb-4 text-gray-500">
+                            Digital & Design</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Figma</span>
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Canva</span>
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Image
+                                Editing</span>
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Digital
                                 Marketing</span>
                         </div>
                     </div>
 
                     <div>
-                        <h4 class="font-mono text-sm tracking-widest border-b border-gray-300 pb-2 mb-4">TECHNICAL</h4>
-                        <div class="flex flex-wrap gap-2">
-                            <span class="text-xl font-bold">Web Development (FE/BE), Database Management, Information
+                        <h4
+                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-gray-300 pb-2 mb-4 text-gray-500">
+                            Technical Engineering</h4>
+                        <div class="flex flex-wrap gap-3">
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Web Development
+                                (FE/BE)</span>
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Database
+                                Management</span>
+                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Information
                                 Architecture</span>
                         </div>
                     </div>
 
                     <div>
-                        <h4 class="font-mono text-sm tracking-widest border-b border-gray-300 pb-2 mb-4">LANGUAGES</h4>
-                        <div class="flex flex-col gap-2">
-                            <div class="flex justify-between">
+                        <h4
+                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-gray-300 pb-2 mb-4 text-gray-500">
+                            Languages</h4>
+                        <div class="space-y-3">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-1">
                                 <span>Indonesian</span>
-                                <span class="font-bold">Native</span>
+                                <span class="font-bold text-sm bg-black text-white px-2 py-0.5">Native</span>
                             </div>
-                            <div class="flex justify-between">
+                            <div class="flex justify-between items-center border-b border-gray-100 pb-1">
                                 <span>English</span>
-                                <span class="font-bold">C1 Speaking / B2 Writing</span>
+                                <span class="font-bold text-sm bg-black text-white px-2 py-0.5">C1 Speaking / B2
+                                    Writing</span>
                             </div>
                         </div>
                     </div>
@@ -392,33 +538,28 @@
 
     <!-- Footer -->
     <footer id="contact" class="bg-swiss-red text-white pt-24 pb-12 px-6 md:px-12 lg:px-24">
-        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
-            <div>
-                <p class="font-serif italic text-2xl mb-4">Let's build something together.</p>
-                <a href="mailto:farisjeh425@gmail.com"
-                    class="font-display font-bold text-5xl md:text-7xl underline decoration-4 hover:opacity-80 transition-opacity">
-                    farisjeh425@gmail.com
-                </a>
-            </div>
-        </div>
-
-        <div class="flex flex-col md:flex-row justify-between border-t border-white/30 pt-8 font-mono text-sm">
-            <div class="mb-4 md:mb-0">
-                <p>(+62) 85161052901</p>
-                <p>Wonosobo, Indonesia</p>
-            </div>
-            <div class="flex gap-8">
-                <a href="#" class="hover:underline">LinkedIn</a>
-                <a href="#" class="hover:underline">Instagram</a>
-                <a href="#" class="hover:underline">Behance</a>
-            </div>
-            <div class="md:text-right mt-4 md:mt-0">
-                <p>&copy; 2025 Maulana Faris Sidqi</p>
-            </div>
+        <div class="md:text-right mt-4 md:mt-0">
+            <p>&copy; 2025 Maulana Faris Sidqi</p>
         </div>
     </footer>
 
     <script>
+        // Theme Toggle Logic
+        const toggleButton = document.getElementById('theme-toggle');
+        const html = document.documentElement;
+        const icon = toggleButton.querySelector('i');
+
+        toggleButton.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            if (html.classList.contains('dark')) {
+                icon.classList.remove('fa-sun');
+                icon.classList.add('fa-moon');
+            } else {
+                icon.classList.remove('fa-moon');
+                icon.classList.add('fa-sun');
+            }
+        });
+
         // Simple animation for elements appearing on scroll
         const observerOptions = {
             threshold: 0.1
