@@ -1,614 +1,443 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Maulana Faris Sidqi - Portfolio Folder</title>
+    <title>Maulana Faris Sidqi | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importing Swiss-style and Elegant Serif fonts -->
     <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Oswald:wght@400;500;700&display=swap"
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Oswald:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'swiss-red': '#E63946',
+                        'off-black': '#121212',
+                        'off-white': '#F1F1F1',
+                        'charcoal': '#1E1E1E',
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Oswald', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    spacing: {
+                        '128': '32rem',
+                    }
+                }
+            }
+        }
+    </script>
     <style>
-        /* 1. RESET & CORE */
-        * {
-            box-sizing: border-box;
-        }
-
         body {
-            margin: 0;
-            padding: 0;
-            background-color: #e5e5e5;
-            font-family: 'Inter', sans-serif;
-            height: 100vh;
-            overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: #111;
-            transition: background-color 0.5s;
-        }
-
-        body.scroll-mode {
-            overflow-y: auto;
-            align-items: flex-start;
-            padding-top: 40px;
-            padding-bottom: 100px;
-            height: auto;
-        }
-
-        /* 2. FOLDER CONTAINER */
-        .folder-container {
-            width: 100%;
-            max-width: 1200px;
-            height: 90vh;
-            position: relative;
-            background-color: #f5f5f5;
-            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.1);
-            border-top: 1px solid #ccc;
-            /* The Pop Animation Container */
-            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        /* UNFOLDED STATE */
-        .folder-container.unfolded {
-            height: auto;
-            background-color: transparent;
-            box-shadow: none;
-            overflow: visible;
-            border: none;
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-            padding-bottom: 100px;
-            /* Space for button */
-        }
-
-        /* 3. FILE/CARD STYLING */
-        .file-card {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: #ffffff;
-            border-top: 1px solid #ddd;
-            /* BOUNCY POP ANIMATION */
-            transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.4s;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.05);
-            will-change: transform;
-        }
-
-        /* Active Card Pop Effect */
-        .file-card.active {
-            box-shadow: 0 -15px 40px rgba(0, 0, 0, 0.15);
-            z-index: 100;
-            /* Temporarily higher visual priority if needed, but we manage via stack order */
-        }
-
-        /* UNFOLDED STATE for Cards */
-        .folder-container.unfolded .file-card {
-            position: relative;
-            height: auto;
-            min-height: 600px;
-            transform: none !important;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            opacity: 1 !important;
-            margin-bottom: 0;
-            z-index: 1 !important;
-        }
-
-        /* Card Colors (Subtle Depth) */
-        .file-card:nth-child(1) {
-            background-color: #ffffff;
-            z-index: 10;
-        }
-
-        .file-card:nth-child(2) {
-            background-color: #fafafa;
-            z-index: 20;
-        }
-
-        .file-card:nth-child(3) {
-            background-color: #f5f5f5;
-            z-index: 30;
-        }
-
-        .file-card:nth-child(4) {
-            background-color: #f0f0f0;
-            z-index: 40;
-        }
-
-        .file-card:nth-child(5) {
-            background-color: #ebebeb;
-            z-index: 50;
-        }
-
-        .file-card:nth-child(6) {
-            background-color: #e6e6e6;
-            z-index: 60;
-        }
-
-        .file-card:nth-child(7) {
-            background-color: #e1e1e1;
-            z-index: 70;
-        }
-
-        .folder-container.unfolded .file-card {
-            background-color: #ffffff;
-        }
-
-        /* 4. HEADER */
-        .card-header {
-            height: 80px;
-            min-height: 80px;
-            padding: 0 40px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-            transition: background 0.3s;
-            user-select: none;
-        }
-
-        .card-header:hover {
-            background-color: rgba(0, 0, 0, 0.02);
-        }
-
-        .folder-container.unfolded .card-header {
+            background-color: #121212;
+            color: #F1F1F1;
             cursor: default;
+            /* Can be changed to custom cursor if needed */
         }
 
-        .header-title {
-            font-family: 'Oswald', sans-serif;
-            text-transform: uppercase;
-            font-size: 24px;
-            letter-spacing: 1px;
-            color: #111;
-            display: flex;
-            align-items: center;
-            gap: 20px;
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
         }
 
-        .header-number {
-            color: #FF3300;
-            font-weight: 700;
+        ::-webkit-scrollbar-track {
+            background: #121212;
         }
 
-        .header-status {
-            font-size: 12px;
-            color: #666;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        ::-webkit-scrollbar-thumb {
+            background: #333;
         }
 
-        /* 5. CONTENT AREA */
-        .card-content {
-            flex-grow: 1;
-            padding: 40px 60px;
-            overflow-y: auto;
-            opacity: 0;
-            transition: opacity 0.4s ease 0.2s;
-            pointer-events: none;
-            /* Smooth scrolling */
-            scroll-behavior: smooth;
+        ::-webkit-scrollbar-thumb:hover {
+            background: #E63946;
         }
 
-        .file-card.active .card-content {
-            opacity: 1;
-            pointer-events: all;
+        /* Hover Reveal Animation for List Items */
+        .project-item {
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
-        .folder-container.unfolded .card-content {
-            opacity: 1;
-            pointer-events: all;
-            overflow-y: visible;
+        .project-item:hover {
+            background-color: #1a1a1a;
+            padding-left: 2rem;
         }
 
-        /* TYPOGRAPHY */
-        h1 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 80px;
-            margin: 0;
+        .project-item:hover .arrow-icon {
+            transform: translateX(10px) rotate(-45deg);
+            color: #E63946;
+        }
+
+        .swiss-title {
             line-height: 0.9;
-            text-transform: uppercase;
-            color: #000;
+            letter-spacing: -0.02em;
         }
 
-        h2 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 48px;
-            margin: 0 0 30px 0;
-            text-transform: uppercase;
-            color: #FF3300;
-        }
-
-        h3 {
-            font-family: 'Oswald', sans-serif;
-            font-size: 24px;
-            margin: 0 0 15px 0;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: #111;
-        }
-
-        p {
-            font-size: 18px;
-            line-height: 1.6;
-            color: #444;
-            max-width: 600px;
-            margin-bottom: 20px;
-        }
-
-        .accent-text {
-            color: #FF3300;
-            font-weight: 500;
-        }
-
-        /* GRID */
-        .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 60px;
-            height: 100%;
-        }
-
-        .img-box {
-            background-color: #f0f0f0;
-            width: 100%;
-            height: 100%;
-            min-height: 400px;
-            border: 1px solid #ddd;
+        /* Image hover zoom effect */
+        .img-zoom-container {
             overflow: hidden;
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
 
-        .img-box img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
+        .img-zoom-container img {
+            transition: transform 0.7s ease;
         }
 
-        ul.swiss-list {
-            list-style: none;
-            padding: 0;
-        }
-
-        ul.swiss-list li {
-            padding: 15px 0;
-            border-bottom: 1px solid #ddd;
-            display: flex;
-            justify-content: space-between;
-            font-size: 18px;
-            color: #222;
-        }
-
-        /* UNFOLD BUTTON */
-        .unfold-btn {
-            position: fixed;
-            bottom: 40px;
-            right: 40px;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            background-color: #FF3300;
-            color: white;
-            border: none;
-            box-shadow: 0 10px 30px rgba(255, 51, 0, 0.4);
-            cursor: pointer;
-            z-index: 1000;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-
-        .unfold-btn:hover {
-            transform: scale(1.1) rotate(90deg);
-        }
-
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .grid-2 {
-                grid-template-columns: 1fr;
-            }
-
-            h1 {
-                font-size: 50px;
-            }
-
-            .card-header {
-                padding: 0 20px;
-            }
-
-            .card-content {
-                padding: 30px;
-            }
+        .img-zoom-container:hover img {
+            transform: scale(1.05);
         }
     </style>
 </head>
 
-<body>
+<body class="antialiased selection:bg-swiss-red selection:text-white">
 
-    <div class="folder-container" id="folder">
-
-        <!-- CARD 1: COVER -->
-        <div class="file-card active" id="card-1">
-            <div class="card-header" onclick="activateCard(0)">
-                <div class="header-title"><span class="header-number">00</span> Cover</div>
-                <span class="header-status">ID: 33070912</span>
-            </div>
-            <div class="card-content">
-                <div style="height: 100%; display: flex; flex-direction: column; justify-content: center;">
-                    <p style="letter-spacing: 2px; font-size: 14px; color: #888; margin-bottom: 10px;">POLITECNICO DI
-                        MILANO</p>
-                    <div style="width: 100px; height: 4px; background: #FF3300; margin-bottom: 40px;"></div>
-                    <h1>Maulana<br>Faris Sidqi</h1>
-                    <p style="font-size: 24px; color: #111; margin-top: 20px; max-width: 800px;">
-                        Founder, Digital Product Manager & UI/UX Designer
-                    </p>
-                    <div style="margin-top: 60px;">
-                        <p class="accent-text">APPLICATION PORTFOLIO 2025</p>
-                        <p style="font-size: 14px; color: #666;">Master of Science in Digital and Interaction Design</p>
-                    </div>
-                </div>
-            </div>
+    <!-- Navigation -->
+    <nav class="fixed w-full top-0 z-50 mix-blend-difference px-6 py-6 flex justify-between items-center text-white">
+        <div class="font-display font-bold text-xl tracking-tighter uppercase">
+            M. Faris Sidqi<span class="text-swiss-red">.</span>
         </div>
-
-        <!-- CARD 2: STATEMENT -->
-        <div class="file-card" id="card-2">
-            <div class="card-header" onclick="activateCard(1)">
-                <div class="header-title"><span class="header-number">01</span> Statement</div>
-                <span class="header-status">Manifesto</span>
-            </div>
-            <div class="card-content">
-                <div class="grid-2">
-                    <div>
-                        <h2>Intent</h2>
-                        <p style="font-size: 22px; color: #111;">"Connecting people through digital innovation."</p>
-                        <p>My professional philosophy is grounded in learning from the past while planning for the
-                            future. I aim to bridge the gap between robust engineering and seamless user experience, a
-                            goal I intend to further at Politecnico di Milano.</p>
-                    </div>
-                    <div style="border-left: 1px solid #ddd; padding-left: 40px;">
-                        <h3>Education</h3>
-                        <ul class="swiss-list">
-                            <li><span>University of Technology Yogyakarta</span><span style="color:#666">3.56 GPA</span>
-                            </li>
-                            <li><span>Bachelor of Information Systems</span><span style="color:#666">2020-2024</span>
-                            </li>
-                        </ul>
-                        <h3 style="margin-top: 40px;">Certification</h3>
-                        <ul class="swiss-list">
-                            <li><span>Google UX Design Professional</span><span style="color:#666">2025</span></li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
+        <div class="hidden md:flex gap-8 font-sans text-sm uppercase tracking-widest">
+            <a href="#thesis" class="hover:text-swiss-red transition-colors">Abstract</a>
+            <a href="#projects" class="hover:text-swiss-red transition-colors">Selected Works</a>
+            <a href="#about" class="hover:text-swiss-red transition-colors">About</a>
+            <a href="#contact" class="hover:text-swiss-red transition-colors">Contact</a>
         </div>
-
-        <!-- CARD 3: HAVENGURT -->
-        <div class="file-card" id="card-3">
-            <div class="card-header" onclick="activateCard(2)">
-                <div class="header-title"><span class="header-number">02</span> Havengurt</div>
-                <span class="header-status">E-Commerce</span>
-            </div>
-            <div class="card-content">
-                <div class="grid-2">
-                    <div>
-                        <span class="accent-text">PROJECT 01</span>
-                        <h2>Havengurt</h2>
-                        <p><strong>Role:</strong> Founder & Product Manager</p>
-                        <p>A direct-to-consumer platform for authentic Wonosobo yogurt products. The design prioritizes
-                            "Value before Brand," using high-contrast visuals to reduce cognitive load.</p>
-                        <h3 style="margin-top: 30px;">UX Strategy: Trust</h3>
-                        <p>Replaced dense nutritional tables with horizontal progress bars to leverage pre-attentive
-                            processing. Functional tags like "Bone Health" bridge the gap between features and user
-                            needs.</p>
-                    </div>
-                    <div class="img-box">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/6138484749840737685"
-                            alt="Havengurt UI">
-                    </div>
-                </div>
-            </div>
+        <div class="md:hidden">
+            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
         </div>
+    </nav>
 
-        <!-- CARD 4: SIMAHA -->
-        <div class="file-card" id="card-4">
-            <div class="card-header" onclick="activateCard(3)">
-                <div class="header-title"><span class="header-number">03</span> SIMAHA</div>
-                <span class="header-status">Academic System</span>
-            </div>
-            <div class="card-content">
-                <div class="grid-2">
-                    <div class="img-box">
-                        <img src="http://googleusercontent.com/image_collection/image_retrieval/10153521771217049158"
-                            alt="SIMAHA Dashboard">
-                    </div>
-                    <div>
-                        <span class="accent-text">PROJECT 02</span>
-                        <h2>SIMAHA</h2>
-                        <p><strong>Role:</strong> UI/UX Designer</p>
-                        <p>A comprehensive overhaul of the university's student information system. The challenge was
-                            high information density across dozens of student activity units.</p>
-                        <h3 style="margin-top: 30px;">Architecture</h3>
-                        <p>Applied heuristic evaluation to group entities (e.g., "Student Union" vs "Activity Unit").
-                            Created a unified design system to ensure consistency during the IT handover.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 5: THESIS -->
-        <div class="file-card" id="card-5">
-            <div class="card-header" onclick="activateCard(4)">
-                <div class="header-title"><span class="header-number">04</span> Thesis</div>
-                <span class="header-status">Research</span>
-            </div>
-            <div class="card-content">
-                <div style="max-width: 800px;">
-                    <span class="accent-text">FINAL PROJECT</span>
-                    <h2>Wredha Mulya</h2>
-                    <p><strong>Topic:</strong> Information System for Elderly Day Care Registration.</p>
-                    <div style="margin: 40px 0; border: 1px solid #ddd; padding: 40px; background: #fafafa;">
-                        <h3>The Problem</h3>
-                        <p>Manual paper registration required elderly users to travel physically to the foundation just
-                            to check requirements, leading to fatigue and data errors.</p>
-                        <h3 style="margin-top: 30px; color: #111;">The Solution</h3>
-                        <p>Developed a web-based portal allowing remote registration and family monitoring. Black-box
-                            testing confirmed 100% reliability across 37 distinct user scenarios.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 6: SKILLS -->
-        <div class="file-card" id="card-6">
-            <div class="card-header" onclick="activateCard(5)">
-                <div class="header-title"><span class="header-number">05</span> Competencies</div>
-                <span class="header-status">Skills</span>
-            </div>
-            <div class="card-content">
-                <div class="grid-2">
-                    <div>
-                        <h2>Technical</h2>
-                        <ul class="swiss-list">
-                            <li>Figma & Prototyping <i class="fa-brands fa-figma"></i></li>
-                            <li>HTML/CSS/JS (Front-End) <i class="fa-solid fa-code"></i></li>
-                            <li>Database Management <i class="fa-solid fa-database"></i></li>
-                            <li>Information Architecture <i class="fa-solid fa-sitemap"></i></li>
-                        </ul>
-                    </div>
-                    <div>
-                        <h2>Design</h2>
-                        <ul class="swiss-list">
-                            <li>User Research & Personas</li>
-                            <li>Heuristic Evaluation</li>
-                            <li>Design Systems</li>
-                            <li>Digital Marketing</li>
-                        </ul>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- CARD 7: CONTACT -->
-        <div class="file-card" id="card-7">
-            <div class="card-header" onclick="activateCard(6)">
-                <div class="header-title"><span class="header-number">06</span> Contact</div>
-                <span class="header-status">Info</span>
-            </div>
-            <div class="card-content">
-                <div style="display: flex; flex-direction: column; justify-content: center; height: 100%;">
-                    <p class="accent-text">GET IN TOUCH</p>
-                    <h1>farisjeh425<br>@gmail.com</h1>
-                    <div style="margin-top: 40px; font-size: 24px;">
-                        <p><i class="fa-solid fa-phone" style="color: #FF3300; margin-right: 20px;"></i> (+62) 851 6105
-                            2901</p>
-                        <p><i class="fa-solid fa-location-dot" style="color: #FF3300; margin-right: 20px;"></i>
-                            Wonosobo, Indonesia</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+    <!-- Mobile Menu -->
+    <div id="mobile-menu"
+        class="hidden fixed inset-0 z-40 bg-off-black flex flex-col justify-center items-center gap-8 text-2xl font-display uppercase">
+        <button onclick="document.getElementById('mobile-menu').classList.add('hidden')"
+            class="absolute top-6 right-6 text-white">
+            <i class="fas fa-times text-3xl"></i>
+        </button>
+        <a href="#thesis" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Thesis Abstract</a>
+        <a href="#projects" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Works</a>
+        <a href="#about" onclick="document.getElementById('mobile-menu').classList.add('hidden')">About</a>
     </div>
 
-    <!-- UNFOLD BUTTON -->
-    <button class="unfold-btn" onclick="toggleUnfold()">
-        <i class="fa-solid fa-layer-group"></i>
-    </button>
+    <!-- Hero Section -->
+    <header class="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20">
+        <div class="max-w-7xl w-full">
+            <p class="font-serif italic text-2xl md:text-3xl text-gray-400 mb-4 animate-fade-in-up">Politecnico di
+                Milano Application</p>
+            <h1 class="font-display font-bold text-6xl md:text-8xl lg:text-9xl uppercase swiss-title mb-8">
+                Digital <span
+                    class="text-transparent bg-clip-text bg-gradient-to-r from-swiss-red to-red-800">Product</span><br>
+                Manager & <br>
+                UI/UX Designer
+            </h1>
+            <div
+                class="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-gray-800 pt-8 mt-12">
+                <div class="max-w-xl mb-8 md:mb-0">
+                    <p class="text-lg text-gray-300 leading-relaxed">
+                        Passionate designer and entrepreneur connecting people through digital innovation.
+                        Bridging the gap between robust engineering and seamless user experience.
+                    </p>
+                </div>
+                <div class="text-right">
+                    <p class="font-mono text-sm text-gray-500">ID: 3307091204010006</p>
+                    <p class="font-mono text-sm text-gray-500">Wonosobo, Indonesia</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Thesis Abstract Section (High Priority) -->
+    <section id="thesis" class="py-24 px-6 md:px-12 lg:px-24 bg-charcoal">
+        <div class="max-w-4xl mx-auto">
+            <div class="flex items-baseline gap-4 mb-8">
+                <span class="font-display text-swiss-red text-6xl font-bold">01</span>
+                <h2 class="font-serif italic text-4xl md:text-5xl text-white">Thesis Abstract</h2>
+            </div>
+
+            <div class="border-l-2 border-swiss-red pl-8 ml-2">
+                <h3 class="font-display text-2xl uppercase tracking-wide mb-4">Development of the Information System for
+                    Day Care and Wisma Registration</h3>
+                <p class="font-mono text-sm text-gray-400 mb-6">Wredha Mulya Foundation, Sleman, DIY</p>
+
+                <div class="prose prose-invert prose-lg text-gray-300 font-light leading-relaxed text-justify">
+                    <p class="mb-4">
+                        Yayasan Wredha Mulya is a foundation that serves independent elderly people with Day Care and
+                        Grha Wredha Mulya programs. Currently, the absence of a digital information system forces
+                        individuals to visit physically for registration and information, creating accessibility
+                        barriers for those living far away.
+                    </p>
+                    <p class="mb-4">
+                        To address this, I developed a comprehensive registration information system using the waterfall
+                        method. The system facilitates online registration, provides complete program information, and
+                        solves current data storage illegibility issues.
+                    </p>
+                    <p>
+                        <strong>Results:</strong> Black-box testing confirmed 100% reliability across 37 scenarios,
+                        ensuring the system functions robustly under various conditions.
+                    </p>
+                </div>
+
+                <div class="mt-8 flex gap-3 flex-wrap">
+                    <span
+                        class="px-3 py-1 border border-gray-600 rounded-full text-xs uppercase tracking-wider">Information
+                        Systems</span>
+                    <span
+                        class="px-3 py-1 border border-gray-600 rounded-full text-xs uppercase tracking-wider">Waterfall</span>
+                    <span
+                        class="px-3 py-1 border border-gray-600 rounded-full text-xs uppercase tracking-wider">Black-box
+                        Testing</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects List (Cieffe / Swiss Style) -->
+    <section id="projects" class="py-24 px-6 md:px-12 lg:px-24">
+        <h2 class="font-display font-bold text-8xl md:text-[10rem] opacity-10 mb-12 select-none">WORKS</h2>
+
+        <!-- Project 1: Havengurt -->
+        <div class="border-t border-gray-800">
+            <div class="group py-12 cursor-pointer transition-colors hover:bg-[#151515]">
+                <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-8">
+                    <div class="flex items-baseline gap-6">
+                        <span class="font-mono text-swiss-red">02</span>
+                        <h3 class="font-display text-5xl md:text-7xl uppercase">Havengurt</h3>
+                    </div>
+                    <span class="font-serif italic text-gray-400 mt-2 md:mt-0">Founder & Product Manager</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <!-- Main Web Project -->
+                    <div class="md:col-span-8">
+                        <div class="img-zoom-container w-full h-96 bg-gray-800 mb-6 relative group overflow-hidden">
+                            <!-- Placeholder for Havengurt Landing Page -->
+                            <img src="/api/placeholder/1200/800" alt="Havengurt Landing Page"
+                                class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                            <div
+                                class="absolute bottom-4 left-4 bg-black px-4 py-2 text-white text-xs font-bold uppercase tracking-widest">
+                                Web Platform</div>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Direct-to-Consumer Platform</h4>
+                        <p class="text-gray-400 mb-6">
+                            A bespoke web platform establishing a direct sales channel for authentic Wonosobo products.
+                            Features include a high-trust "Science Verification" section, progress-bar nutrition
+                            visualization, and a "Form Factor First" architecture to reduce choice paralysis.
+                        </p>
+                        <a href="https://havengurt.vercel.app/" target="_blank"
+                            class="inline-flex items-center gap-2 text-swiss-red border-b border-swiss-red pb-1 hover:text-white hover:border-white transition-all">
+                            Visit Live Site <i class="fas fa-arrow-right -rotate-45"></i>
+                        </a>
+                    </div>
+
+                    <!-- Sidebar / Secondary Project Slot -->
+                    <div class="md:col-span-4 flex flex-col gap-8">
+                        <!-- Stats -->
+                        <div class="p-6 border border-gray-800">
+                            <h5 class="font-mono text-xs text-gray-500 mb-2">ROLE</h5>
+                            <p class="text-lg">Founder, PM, Engineer</p>
+                            <h5 class="font-mono text-xs text-gray-500 mt-4 mb-2">STACK</h5>
+                            <p class="text-lg">React, Tailwind, Vercel</p>
+                        </div>
+
+                        <!-- REQUESTED PLACEHOLDER: Packaging Design -->
+                        <div
+                            class="relative w-full aspect-square border-2 border-dashed border-gray-700 hover:border-swiss-red transition-colors group flex items-center justify-center bg-[#1a1a1a]">
+                            <div class="text-center p-6">
+                                <i
+                                    class="fas fa-box-open text-4xl text-gray-600 mb-4 group-hover:text-swiss-red transition-colors"></i>
+                                <h4 class="font-display text-xl uppercase mb-2">Packaging & Label Design</h4>
+                                <p class="text-sm text-gray-500">High-fidelity branding assets and physical product
+                                    design for Havengurt.</p>
+                                <span class="text-xs font-mono text-swiss-red mt-4 block">[See Physical Mockups]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Project 2: SIMAHA -->
+        <div class="border-t border-gray-800">
+            <div class="group py-12 cursor-pointer transition-colors hover:bg-[#151515]">
+                <div class="flex flex-col md:flex-row md:items-baseline justify-between mb-8">
+                    <div class="flex items-baseline gap-6">
+                        <span class="font-mono text-swiss-red">03</span>
+                        <h3 class="font-display text-5xl md:text-7xl uppercase">Simaha</h3>
+                    </div>
+                    <span class="font-serif italic text-gray-400 mt-2 md:mt-0">UI/UX Designer</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <!-- Main System Project -->
+                    <div class="md:col-span-8">
+                        <div class="img-zoom-container w-full h-96 bg-gray-800 mb-6 relative group overflow-hidden">
+                            <!-- Placeholder for SIMAHA Dashboard -->
+                            <img src="/api/placeholder/1200/800" alt="SIMAHA Dashboard"
+                                class="w-full h-full object-cover opacity-60 group-hover:opacity-100 transition-opacity">
+                            <div
+                                class="absolute bottom-4 left-4 bg-black px-4 py-2 text-white text-xs font-bold uppercase tracking-widest">
+                                System Overhaul</div>
+                        </div>
+                        <h4 class="text-xl font-bold mb-4">Student Information System Redesign</h4>
+                        <p class="text-gray-400 mb-6">
+                            A comprehensive overhaul of UTY's student information system. Created a comprehensive design
+                            system to bridge the gap between design and IT development. Utilized heuristic evaluation to
+                            restructure information architecture for student organizations and scholarships.
+                        </p>
+                    </div>
+
+                    <!-- Sidebar / Secondary Project Slot -->
+                    <div class="md:col-span-4 flex flex-col gap-8">
+                        <!-- Stats -->
+                        <div class="p-6 border border-gray-800">
+                            <h5 class="font-mono text-xs text-gray-500 mb-2">CLIENT</h5>
+                            <p class="text-lg">University of Tech. Yogyakarta</p>
+                            <h5 class="font-mono text-xs text-gray-500 mt-4 mb-2">FOCUS</h5>
+                            <p class="text-lg">Design Systems, IA, Prototyping</p>
+                        </div>
+
+                        <!-- REQUESTED PLACEHOLDER: Student Affairs UI -->
+                        <div
+                            class="relative w-full aspect-square border-2 border-dashed border-gray-700 hover:border-swiss-red transition-colors group flex items-center justify-center bg-[#1a1a1a]">
+                            <div class="text-center p-6">
+                                <i
+                                    class="fas fa-users text-4xl text-gray-600 mb-4 group-hover:text-swiss-red transition-colors"></i>
+                                <h4 class="font-display text-xl uppercase mb-2">Student Affairs UI/UX</h4>
+                                <p class="text-sm text-gray-500">High-fidelity interface design specifically for the
+                                    Student Affairs department.</p>
+                                <span class="text-xs font-mono text-swiss-red mt-4 block">[View Prototype]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800"></div>
+    </section>
+
+    <!-- About & Skills -->
+    <section id="about" class="py-24 px-6 md:px-12 lg:px-24 bg-off-white text-off-black">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+            <div>
+                <h2 class="font-serif italic text-5xl mb-8">Statement of Intent</h2>
+                <p class="text-lg leading-relaxed mb-6">
+                    My professional philosophy is grounded in learning from the past while planning for the future. I
+                    aim to bridge the gap between robust engineering and seamless user experience, a goal I intend to
+                    further at Politecnico di Milano.
+                </p>
+
+                <h3 class="font-display font-bold text-2xl uppercase mt-12 mb-6">Education</h3>
+                <ul class="space-y-6">
+                    <li class="border-l-2 border-black pl-4">
+                        <div class="font-bold">University of Technology Yogyakarta</div>
+                        <div class="text-sm">Bachelor Degree of Information System (3.56/4.00)</div>
+                        <div class="text-xs text-gray-600">Sep 2020 - Sep 2024</div>
+                    </li>
+                    <li class="border-l-2 border-black pl-4">
+                        <div class="font-bold">Google UX Design Professional</div>
+                        <div class="text-sm">Coursera Certification</div>
+                        <div class="text-xs text-gray-600">Jun 2025 - Current</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="font-display font-bold text-6xl uppercase mb-12 opacity-20">Skills</h3>
+
+                <div class="space-y-12">
+                    <div>
+                        <h4 class="font-mono text-sm tracking-widest border-b border-gray-300 pb-2 mb-4">DIGITAL &
+                            DESIGN</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xl font-bold">Figma, Canva, Image Editing, Microsoft Office, Digital
+                                Marketing</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-mono text-sm tracking-widest border-b border-gray-300 pb-2 mb-4">TECHNICAL</h4>
+                        <div class="flex flex-wrap gap-2">
+                            <span class="text-xl font-bold">Web Development (FE/BE), Database Management, Information
+                                Architecture</span>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h4 class="font-mono text-sm tracking-widest border-b border-gray-300 pb-2 mb-4">LANGUAGES</h4>
+                        <div class="flex flex-col gap-2">
+                            <div class="flex justify-between">
+                                <span>Indonesian</span>
+                                <span class="font-bold">Native</span>
+                            </div>
+                            <div class="flex justify-between">
+                                <span>English</span>
+                                <span class="font-bold">C1 Speaking / B2 Writing</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-swiss-red text-white pt-24 pb-12 px-6 md:px-12 lg:px-24">
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-24">
+            <div>
+                <p class="font-serif italic text-2xl mb-4">Let's build something together.</p>
+                <a href="mailto:farisjeh425@gmail.com"
+                    class="font-display font-bold text-5xl md:text-7xl underline decoration-4 hover:opacity-80 transition-opacity">
+                    farisjeh425@gmail.com
+                </a>
+            </div>
+        </div>
+
+        <div class="flex flex-col md:flex-row justify-between border-t border-white/30 pt-8 font-mono text-sm">
+            <div class="mb-4 md:mb-0">
+                <p>(+62) 85161052901</p>
+                <p>Wonosobo, Indonesia</p>
+            </div>
+            <div class="flex gap-8">
+                <a href="#" class="hover:underline">LinkedIn</a>
+                <a href="#" class="hover:underline">Instagram</a>
+                <a href="#" class="hover:underline">Behance</a>
+            </div>
+            <div class="md:text-right mt-4 md:mt-0">
+                <p>&copy; 2025 Maulana Faris Sidqi</p>
+            </div>
+        </div>
+    </footer>
 
     <script>
-        const HEADER_HEIGHT = 80;
-        const cards = document.querySelectorAll('.file-card');
-        const totalCards = cards.length;
-        const folder = document.getElementById('folder');
-        const body = document.body;
-        let isUnfolded = false;
+        // Simple animation for elements appearing on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
 
-        // ----- STACK LOGIC (With Pop & Padding) -----
-        function activateCard(index) {
-            if (isUnfolded) {
-                cards[index].scrollIntoView({ behavior: 'smooth' });
-                return;
-            }
-
-            cards.forEach((card, i) => {
-                card.classList.remove('active');
-                const contentArea = card.querySelector('.card-content');
-
-                // RESET PADDING
-                contentArea.style.paddingBottom = '40px';
-
-                if (i <= index) {
-                    // Stack at top
-                    card.style.transform = `translateY(${i * HEADER_HEIGHT}px)`;
-
-                    if (i === index) {
-                        card.classList.add('active');
-
-                        // CRITICAL FIX: Add padding equal to the remaining stack size
-                        // This ensures content scrolls ABOVE the bottom stack
-                        const cardsBelow = totalCards - 1 - index;
-                        const obstructedHeight = cardsBelow * HEADER_HEIGHT;
-
-                        // Add extra buffer (20px)
-                        contentArea.style.paddingBottom = `${obstructedHeight + 40}px`;
-                    }
-                } else {
-                    // Stack at bottom
-                    const offsetFromBottom = (totalCards - i) * HEADER_HEIGHT;
-                    const containerHeight = folder.offsetHeight;
-                    card.style.transform = `translateY(${containerHeight - offsetFromBottom}px)`;
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('opacity-100', 'translate-y-0');
+                    entry.target.classList.remove('opacity-0', 'translate-y-10');
                 }
             });
-        }
+        }, observerOptions);
 
-        // ----- TOGGLE LOGIC -----
-        function toggleUnfold() {
-            isUnfolded = !isUnfolded;
-
-            if (isUnfolded) {
-                folder.classList.add('unfolded');
-                body.classList.add('scroll-mode');
-
-                // Icon Change
-                const icon = document.querySelector('.unfold-btn i');
-                icon.classList.remove('fa-layer-group');
-                icon.classList.add('fa-compress');
-
-                // Reset specific stack styles for clean flow
-                cards.forEach(card => {
-                    card.querySelector('.card-content').style.paddingBottom = '40px';
-                });
-
-            } else {
-                folder.classList.remove('unfolded');
-                body.classList.remove('scroll-mode');
-
-                const icon = document.querySelector('.unfold-btn i');
-                icon.classList.add('fa-layer-group');
-                icon.classList.remove('fa-compress');
-
-                activateCard(0);
-                window.scrollTo(0, 0);
-            }
-        }
-
-        window.onload = () => activateCard(0);
-        window.onresize = () => { if (!isUnfolded) activateCard(0); };
+        document.querySelectorAll('section > div').forEach(el => {
+            el.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+            observer.observe(el);
+        });
     </script>
-
 </body>
 
 </html>
