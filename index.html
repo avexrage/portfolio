@@ -1,93 +1,83 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth dark">
+colors: {
+'swiss-red': '#E63946',
+'off-black': '#0F0F0F',
+'off-white': '#F5F5F5',
+'charcoal': '#1E1E1E',
+'paper': '#EAEAEA',
+},
+fontFamily: {
+sans: ['Inter', 'sans-serif'],
+display: ['Oswald', 'sans-serif'],
+serif: ['Playfair Display', 'serif'],
+},
+spacing: {
+'128': '32rem',
+}
+}
+}
+}
+</script>
+<style>
+    body {
+        cursor: default;
+    }
 
-<head>
-    <meta charset="UTF-8">
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        'swiss-red': '#E63946',
-                        'off-black': '#0F0F0F',
-                        'off-white': '#F5F5F5',
-                        'charcoal': '#1E1E1E',
-                        'paper': '#EAEAEA',
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        display: ['Oswald', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif'],
-                    },
-                    spacing: {
-                        '128': '32rem',
-                    }
-                }
-            }
-        }
-    </script>
-    <style>
-        body {
-            cursor: default;
-        }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+        width: 8px;
+    }
 
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
+    ::-webkit-scrollbar-track {
+        background: #0F0F0F;
+    }
 
-        ::-webkit-scrollbar-track {
-            background: #0F0F0F;
-        }
+    ::-webkit-scrollbar-thumb {
+        background: #333;
+    }
 
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-        }
+    ::-webkit-scrollbar-thumb:hover {
+        background: #E63946;
+    }
 
-        ::-webkit-scrollbar-thumb:hover {
-            background: #E63946;
-        }
+    /* Hover Reveal Animation for List Items */
+    .project-item {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-        /* Hover Reveal Animation for List Items */
-        .project-item {
-            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-        }
+    .project-item:hover {
+        background-color: #1a1a1a;
+        padding-left: 2rem;
+    }
 
-        .project-item:hover {
-            background-color: #1a1a1a;
-            padding-left: 2rem;
-        }
+    .project-item:hover .arrow-icon {
+        transform: translateX(10px) rotate(-45deg);
+        color: #E63946;
+    }
 
-        .project-item:hover .arrow-icon {
-            transform: translateX(10px) rotate(-45deg);
-            color: #E63946;
-        }
+    .swiss-title {
+        line-height: 0.9;
+        letter-spacing: -0.02em;
+    }
 
-        .swiss-title {
-            line-height: 0.9;
-            letter-spacing: -0.02em;
-        }
+    /* Image hover zoom effect */
+    .img-zoom-container {
+        overflow: hidden;
+    }
 
-        /* Image hover zoom effect */
-        .img-zoom-container {
-            overflow: hidden;
-        }
+    .img-zoom-container img {
+        transition: transform 0.7s ease;
+    }
 
-        .img-zoom-container img {
-            transition: transform 0.7s ease;
-        }
+    .img-zoom-container:hover img {
+        transform: scale(1.05);
+    }
 
-        .img-zoom-container:hover img {
-            transform: scale(1.05);
-        }
-
-        /* Academic Paper Style for Thesis */
-        .academic-paper {
-            background-color: #1E1E1E;
-            border-left: 4px solid #E63946;
-        }
-    </style>
+    /* Academic Paper Style for Thesis */
+    .academic-paper {
+        background-color: #1E1E1E;
+        border-left: 4px solid #E63946;
+    }
+</style>
 </head>
 
 <body
