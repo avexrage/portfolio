@@ -9,10 +9,19 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- Importing Swiss-style and Elegant Serif fonts -->
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Oswald:wght@400;500;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap"
         rel="stylesheet">
+
+    <!-- Theme Script (Prevents Flash) -->
+    <script>
+        // Check local storage or system preference
+        if (localStorage.theme === 'light' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: light)').matches)) {
+            document.documentElement.setAttribute('data-theme', 'light');
+        } else {
+            document.documentElement.setAttribute('data-theme', 'dark');
+        }
+    </script>
 
     <script>
         tailwind.config = {
@@ -20,10 +29,14 @@
                 extend: {
                     colors: {
                         'swiss-red': '#E63946',
-                        'off-black': '#0F0F0F',
-                        'off-white': '#F5F5F5',
-                        'charcoal': '#1E1E1E',
-                        'paper': '#EAEAEA',
+                        // Dynamic Theme Colors
+                        'bg-primary': 'var(--bg-primary)',
+                        'bg-secondary': 'var(--bg-secondary)',
+                        'bg-tertiary': 'var(--bg-tertiary)',
+                        'text-primary': 'var(--text-primary)',
+                        'text-secondary': 'var(--text-secondary)',
+                        'border-color': 'var(--border-color)',
+                        'accent-subtle': 'var(--accent-subtle)',
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -38,9 +51,42 @@
         }
     </script>
     <style>
+        /* CSS Variables for Theming */
+        :root {
+            /* Default Dark Mode */
+            --bg-primary: #0F0F0F;
+            --bg-secondary: #141414;
+            --bg-tertiary: #151515;
+            --text-primary: #F5F5F5;
+            --text-secondary: #9CA3AF;
+            /* Gray-400 */
+            --border-color: #27272a;
+            /* Gray-800 roughly */
+            --accent-subtle: #1f2937;
+            /* Gray-800 */
+        }
+
+        [data-theme="light"] {
+            /* Light Mode Overrides */
+            --bg-primary: #FFFFFF;
+            --bg-secondary: #F3F4F6;
+            /* Gray-100 */
+            --bg-tertiary: #F9FAFB;
+            /* Gray-50 */
+            --text-primary: #111827;
+            /* Gray-900 */
+            --text-secondary: #4B5563;
+            /* Gray-600 */
+            --border-color: #E5E7EB;
+            /* Gray-200 */
+            --accent-subtle: #F3F4F6;
+            /* Gray-100 */
+        }
+
         body {
-            background-color: #0F0F0F;
-            color: #F5F5F5;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            transition: background-color 0.3s ease, color 0.3s ease;
             cursor: default;
         }
 
@@ -50,7 +96,7 @@
         }
 
         ::-webkit-scrollbar-track {
-            background: #0F0F0F;
+            background: var(--bg-primary);
         }
 
         ::-webkit-scrollbar-thumb {
@@ -67,7 +113,7 @@
         }
 
         .project-item:hover {
-            background-color: #1a1a1a;
+            background-color: var(--bg-tertiary);
             padding-left: 2rem;
         }
 
@@ -96,8 +142,23 @@
 
         /* Academic Paper Style for Thesis */
         .academic-paper {
-            background-color: #1E1E1E;
+            background-color: var(--bg-tertiary);
+            /* Dynamic background */
             border-left: 4px solid #E63946;
+        }
+
+        /* Smooth transitions for theme switching */
+        section,
+        div,
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        p,
+        span,
+        a {
+            transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
         }
     </style>
 </head>
@@ -109,24 +170,36 @@
         <div class="font-display font-bold text-xl tracking-tighter uppercase">
             M. Faris Sidqi<span class="text-swiss-red">.</span>
         </div>
-        <div class="hidden md:flex gap-8 font-sans text-sm uppercase tracking-widest">
-            <a href="#thesis" class="hover:text-swiss-red transition-colors">Academic Research</a>
-            <a href="#projects" class="hover:text-swiss-red transition-colors">Selected Projects</a>
-            <a href="#about" class="hover:text-swiss-red transition-colors">Profile</a>
-            <a href="#contact" class="hover:text-swiss-red transition-colors">Contact</a>
-        </div>
-        <div class="md:hidden">
-            <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white">
-                <i class="fas fa-bars text-2xl"></i>
+        <div class="flex items-center gap-8">
+            <div class="hidden md:flex gap-8 font-sans text-sm uppercase tracking-widest">
+                <a href="#thesis" class="hover:text-swiss-red transition-colors">Academic Research</a>
+                <a href="#projects" class="hover:text-swiss-red transition-colors">Selected Projects</a>
+                <a href="#about" class="hover:text-swiss-red transition-colors">Profile</a>
+                <a href="#contact" class="hover:text-swiss-red transition-colors">Contact</a>
+            </div>
+
+            <!-- Theme Toggle Button -->
+            <button id="theme-toggle" class="p-2 rounded-full hover:bg-white/10 transition-colors focus:outline-none"
+                aria-label="Toggle Dark Mode">
+                <!-- Sun Icon (for Dark Mode) -->
+                <i class="fas fa-sun text-lg hidden dark:block" id="sun-icon"></i>
+                <!-- Moon Icon (for Light Mode) -->
+                <i class="fas fa-moon text-lg block dark:hidden" id="moon-icon"></i>
             </button>
+
+            <div class="md:hidden">
+                <button onclick="document.getElementById('mobile-menu').classList.toggle('hidden')" class="text-white">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
     <!-- Mobile Menu -->
     <div id="mobile-menu"
-        class="hidden fixed inset-0 z-40 bg-off-black flex flex-col justify-center items-center gap-8 text-2xl font-display uppercase">
+        class="hidden fixed inset-0 z-40 bg-bg-primary flex flex-col justify-center items-center gap-8 text-2xl font-display uppercase text-text-primary">
         <button onclick="document.getElementById('mobile-menu').classList.add('hidden')"
-            class="absolute top-6 right-6 text-white">
+            class="absolute top-6 right-6 text-text-primary">
             <i class="fas fa-times text-3xl"></i>
         </button>
         <a href="#thesis" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Academic Research</a>
@@ -139,10 +212,12 @@
         <div class="max-w-7xl w-full">
             <div class="flex items-center gap-4 mb-6 animate-fade-in-up">
                 <div class="h-px w-12 bg-swiss-red"></div>
-                <p class="font-serif italic text-2xl md:text-3xl text-gray-400">Politecnico di Milano Application</p>
+                <p class="font-serif italic text-2xl md:text-3xl text-text-secondary">Politecnico di Milano Application
+                </p>
             </div>
 
-            <h1 class="font-display font-bold text-6xl md:text-8xl lg:text-9xl uppercase swiss-title mb-8">
+            <h1
+                class="font-display font-bold text-6xl md:text-8xl lg:text-9xl uppercase swiss-title mb-8 text-text-primary">
                 Digital <span
                     class="text-transparent bg-clip-text bg-gradient-to-r from-swiss-red to-red-800">Product</span><br>
                 Manager & <br>
@@ -150,37 +225,38 @@
             </h1>
 
             <div
-                class="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-gray-800 pt-8 mt-12">
+                class="flex flex-col md:flex-row justify-between items-start md:items-end border-t border-border-color pt-8 mt-12">
                 <div class="max-w-xl mb-8 md:mb-0">
-                    <p class="text-lg text-gray-300 leading-relaxed">
-                        I bridge the gap between <strong class="text-white">Information Systems engineering</strong> and
-                        <strong class="text-white">User Experience design</strong>.
+                    <p class="text-lg text-text-secondary leading-relaxed">
+                        I bridge the gap between <strong class="text-text-primary">Information Systems
+                            engineering</strong> and <strong class="text-text-primary">User Experience design</strong>.
                         My portfolio demonstrates a deliberate approach to solving problems through technology, grounded
                         in research and executed with precision.
                     </p>
                 </div>
                 <div class="text-right">
-                    <p class="font-mono text-sm text-gray-500 mb-1">CANDIDATE FROM</p>
-                    <p class="font-mono text-sm text-gray-500">WONOSOBO, INDONESIA</p>
+                    <p class="font-mono text-sm text-text-secondary mb-1">CANDIDATE ID: 3307091204010006</p>
+                    <p class="font-mono text-sm text-text-secondary">WONOSOBO, INDONESIA</p>
                 </div>
             </div>
         </div>
     </header>
 
     <!-- Thesis Abstract Section (Formal Presentation) -->
-    <section id="thesis" class="py-24 px-6 md:px-12 lg:px-24 bg-[#141414]">
+    <section id="thesis" class="py-24 px-6 md:px-12 lg:px-24 bg-bg-secondary">
         <div class="max-w-5xl mx-auto">
             <div
-                class="flex flex-col md:flex-row md:items-baseline justify-between mb-12 border-b border-gray-800 pb-6">
+                class="flex flex-col md:flex-row md:items-baseline justify-between mb-12 border-b border-border-color pb-6">
                 <div class="flex items-baseline gap-4">
                     <span class="font-display text-swiss-red text-4xl font-bold">01</span>
-                    <h2 class="font-display font-bold text-4xl md:text-5xl uppercase">Academic Research</h2>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl uppercase text-text-primary">Academic
+                        Research</h2>
                 </div>
-                <span class="font-mono text-sm text-gray-500 mt-2 md:mt-0 uppercase tracking-widest">Bachelor Thesis
-                    Abstract</span>
+                <span class="font-mono text-sm text-text-secondary mt-2 md:mt-0 uppercase tracking-widest">Bachelor
+                    Thesis Abstract</span>
             </div>
 
-            <div class="academic-paper p-8 md:p-12 rounded-sm shadow-2xl relative overflow-hidden group">
+            <div class="academic-paper p-8 md:p-12 rounded-sm shadow-xl relative overflow-hidden group">
                 <!-- Decorative background element -->
                 <div
                     class="absolute top-0 right-0 w-32 h-32 bg-swiss-red opacity-5 rounded-bl-full pointer-events-none">
@@ -190,15 +266,14 @@
                     <span
                         class="inline-block py-1 px-3 border border-swiss-red text-swiss-red text-xs font-bold uppercase tracking-widest mb-4">Information
                         Systems</span>
-                    <h3 class="font-serif text-3xl md:text-4xl leading-tight mb-2 text-white">Development of the
+                    <h3 class="font-serif text-3xl md:text-4xl leading-tight mb-2 text-text-primary">Development of the
                         Information System for Day Care and Wisma Registration</h3>
-                    <p class="font-mono text-sm text-gray-400">Wredha Mulya Foundation, Sleman, DIY | 2024</p>
+                    <p class="font-mono text-sm text-text-secondary">Wredha Mulya Foundation, Sleman, DIY | 2024</p>
                 </div>
 
-                <div
-                    class="prose prose-invert prose-lg text-gray-300 font-serif leading-relaxed text-justify max-w-none">
+                <div class="prose prose-lg text-text-secondary font-serif leading-relaxed text-justify max-w-none">
                     <p
-                        class="mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-white first-letter:mr-3 first-letter:float-left">
+                        class="mb-6 first-letter:text-5xl first-letter:font-bold first-letter:text-text-primary first-letter:mr-3 first-letter:float-left">
                         Yayasan Wredha Mulya is a foundation that serves independent elderly people with Day Care and
                         Grha Wredha Mulya programs. Currently, the absence of a digital information system forces
                         individuals to visit physically for registration and information, creating accessibility
@@ -209,20 +284,28 @@
                         <strong>Waterfall method</strong>. The system facilitates online registration, provides complete
                         program information, and solves current data storage illegibility issues.
                     </p>
-                    <div class="bg-black/30 p-6 border-l-2 border-gray-600 my-8">
-                        <p class="italic text-gray-200 m-0">
+                    <div class="bg-bg-primary p-6 border-l-2 border-text-secondary/30 my-8">
+                        <p class="italic text-text-primary m-0">
                             <strong>Key Result:</strong> Black-box testing confirmed 100% reliability across 37
                             scenarios, ensuring the system functions robustly under various conditions.
                         </p>
                     </div>
                 </div>
 
-                <div class="mt-8 pt-8 border-t border-gray-800 flex flex-wrap gap-4 items-center">
-                    <span class="font-mono text-xs text-gray-500 uppercase">Keywords:</span>
-                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">Information Systems</span>
-                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">Waterfall Methodology</span>
-                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">Black-box Testing</span>
-                    <span class="text-xs bg-gray-800 px-3 py-1 rounded text-gray-300">System Architecture</span>
+                <div class="mt-8 pt-8 border-t border-border-color flex flex-wrap gap-4 items-center">
+                    <span class="font-mono text-xs text-text-secondary uppercase">Keywords:</span>
+                    <span
+                        class="text-xs bg-bg-primary border border-border-color px-3 py-1 rounded text-text-secondary">Information
+                        Systems</span>
+                    <span
+                        class="text-xs bg-bg-primary border border-border-color px-3 py-1 rounded text-text-secondary">Waterfall
+                        Methodology</span>
+                    <span
+                        class="text-xs bg-bg-primary border border-border-color px-3 py-1 rounded text-text-secondary">Black-box
+                        Testing</span>
+                    <span
+                        class="text-xs bg-bg-primary border border-border-color px-3 py-1 rounded text-text-secondary">System
+                        Architecture</span>
                 </div>
             </div>
         </div>
@@ -230,33 +313,35 @@
 
     <!-- Projects List (Detailed & Deliberate) -->
     <section id="projects" class="py-24 px-6 md:px-12 lg:px-24">
-        <h2 class="font-display font-bold text-8xl md:text-[10rem] opacity-5 mb-4 select-none -ml-4">PORTFOLIO</h2>
-        <p class="text-gray-400 max-w-2xl mb-16 font-mono text-sm border-l border-swiss-red pl-4">
+        <h2 class="font-display font-bold text-8xl md:text-[10rem] opacity-5 mb-4 select-none -ml-4 text-text-primary">
+            PORTFOLIO</h2>
+        <p class="text-text-secondary max-w-2xl mb-16 font-mono text-sm border-l border-swiss-red pl-4">
             Selected works representing the intersection of entrepreneurial strategy, technological implementation, and
             user-centered design.
         </p>
 
         <!-- Project 1: Havengurt -->
-        <div class="border-t border-gray-800">
+        <div class="border-t border-border-color">
             <div class="group py-16">
                 <div class="flex flex-col md:flex-row md:items-start justify-between mb-10">
                     <div class="flex items-start gap-6">
                         <span class="font-mono text-swiss-red pt-2">02</span>
                         <div>
-                            <h3 class="font-display text-5xl md:text-7xl uppercase mb-2">Havengurt</h3>
+                            <h3 class="font-display text-5xl md:text-7xl uppercase mb-2 text-text-primary">Havengurt
+                            </h3>
                             <div class="flex gap-2">
                                 <span
                                     class="bg-swiss-red text-white text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Entrepreneurial
                                     Venture</span>
                                 <span
-                                    class="bg-gray-800 text-gray-300 text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Product
+                                    class="bg-accent-subtle text-text-secondary text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Product
                                     Management</span>
                             </div>
                         </div>
                     </div>
                     <div class="text-right mt-4 md:mt-0">
-                        <p class="font-serif italic text-xl text-white">Founder & Product Manager</p>
-                        <p class="font-mono text-xs text-gray-500 mt-1">Feb 2025 - Current</p>
+                        <p class="font-serif italic text-xl text-text-primary">Founder & Product Manager</p>
+                        <p class="font-mono text-xs text-text-secondary mt-1">Feb 2025 - Current</p>
                     </div>
                 </div>
 
@@ -264,16 +349,16 @@
                     <!-- Main Web Project -->
                     <div class="md:col-span-8">
                         <div
-                            class="img-zoom-container w-full h-96 bg-gray-800 mb-8 relative group overflow-hidden border border-gray-800">
+                            class="img-zoom-container w-full h-96 bg-bg-tertiary mb-8 relative group overflow-hidden border border-border-color">
                             <!-- Placeholder for Havengurt Landing Page -->
-                            <img src="hero.png" alt="Havengurt Landing Page"
+                            <img src="/api/placeholder/1200/800" alt="Havengurt Landing Page"
                                 class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
                         </div>
 
-                        <div class="prose prose-invert max-w-none">
-                            <h4 class="font-display text-2xl uppercase tracking-wide mb-4">Direct-to-Consumer Platform
-                            </h4>
-                            <p class="text-gray-400 mb-8 leading-relaxed">
+                        <div class="prose max-w-none">
+                            <h4 class="font-display text-2xl uppercase tracking-wide mb-4 text-text-primary">
+                                Direct-to-Consumer Platform</h4>
+                            <p class="text-text-secondary mb-8 leading-relaxed">
                                 A bespoke web platform establishing a direct sales channel for authentic Wonosobo
                                 products. This project demonstrates my ability to merge <strong>entrepreneurial
                                     strategy</strong> with <strong>technological implementation</strong>.
@@ -281,35 +366,40 @@
 
                             <!-- ELABORATION: Design Thought Process -->
                             <div
-                                class="bg-[#151515] p-8 border-l-2 border-swiss-red/50 hover:border-swiss-red transition-colors">
+                                class="bg-bg-tertiary p-8 border-l-2 border-swiss-red/50 hover:border-swiss-red transition-colors">
                                 <h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-swiss-red">Methodology
                                     & Thought Process</h5>
                                 <div class="grid md:grid-cols-2 gap-8">
                                     <div>
-                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">01.
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">01.
                                             Visual Hierarchy</strong>
-                                        <p class="text-sm text-gray-400">Prioritized value proposition ("Real Fruit")
-                                            over brand name to reduce cognitive load and increase immediate conversion.
-                                        </p>
+                                        <p class="text-sm text-text-secondary">Prioritized value proposition ("Real
+                                            Fruit") over brand name to reduce cognitive load and increase immediate
+                                            conversion.</p>
                                     </div>
                                     <div>
-                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">02.
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">02.
                                             Trust Signals</strong>
-                                        <p class="text-sm text-gray-400">Implemented "Verified by Science" data
+                                        <p class="text-sm text-text-secondary">Implemented "Verified by Science" data
                                             visualization to transform the "homemade" perception into a verified quality
                                             asset.</p>
                                     </div>
                                     <div>
-                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">03.
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">03.
                                             Mental Models</strong>
-                                        <p class="text-sm text-gray-400">Organized catalog by form factor (Drink vs
-                                            Scoop) rather than flavor, aligning with user decision-making patterns.</p>
+                                        <p class="text-sm text-text-secondary">Organized catalog by form factor (Drink
+                                            vs Scoop) rather than flavor, aligning with user decision-making patterns.
+                                        </p>
                                     </div>
                                     <div>
-                                        <strong class="text-white block mb-2 font-display uppercase tracking-wide">04.
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">04.
                                             Microcopy</strong>
-                                        <p class="text-sm text-gray-400">Used "Add to Pre-order" instead of generic
-                                            "Buy" to transparently manage lead-time expectations.</p>
+                                        <p class="text-sm text-text-secondary">Used "Add to Pre-order" instead of
+                                            generic "Buy" to transparently manage lead-time expectations.</p>
                                     </div>
                                 </div>
                             </div>
@@ -317,7 +407,7 @@
 
                         <div class="mt-8">
                             <a href="https://havengurt.vercel.app/" target="_blank"
-                                class="group inline-flex items-center gap-3 text-white border border-gray-700 px-6 py-3 hover:bg-swiss-red hover:border-swiss-red transition-all text-sm uppercase tracking-widest font-bold">
+                                class="group inline-flex items-center gap-3 text-text-primary border border-border-color px-6 py-3 hover:bg-swiss-red hover:border-swiss-red hover:text-white transition-all text-sm uppercase tracking-widest font-bold">
                                 Visit Live Platform <i
                                     class="fas fa-arrow-right group-hover:-rotate-45 transition-transform duration-300"></i>
                             </a>
@@ -326,120 +416,168 @@
 
                     <!-- Sidebar / Secondary Project Slot -->
                     <div class="md:col-span-4 flex flex-col gap-8">
-                        <div class="flex items-start gap-6">
-                            <span class="font-mono text-swiss-red pt-2">03</span>
+                        <div class="p-8 bg-bg-tertiary border border-border-color h-full flex flex-col justify-between">
                             <div>
-                                <h3 class="font-display text-5xl md:text-7xl uppercase mb-2">Simaha</h3>
-                                <div class="flex gap-2">
-                                    <span
-                                        class="bg-gray-700 text-white text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Curricular
-                                        Project</span>
-                                    <span
-                                        class="bg-gray-800 text-gray-300 text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">UI/UX
-                                        Redesign</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-right mt-4 md:mt-0">
-                            <p class="font-serif italic text-xl text-white">Lead UI/UX Designer</p>
-                            <p class="font-mono text-xs text-gray-500 mt-1">University of Technology
-                                Yogyakarta</p>
-                        </div>
-                    </div>
-
-                    <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
-                        <!-- Main System Project -->
-                        <div class="md:col-span-8">
-                            <div
-                                class="img-zoom-container w-full h-96 bg-gray-800 mb-8 relative group overflow-hidden border border-gray-800">
-                                <!-- Placeholder for SIMAHA Dashboard -->
-                                <img src="simaha.png" alt="SIMAHA Dashboard"
-                                    class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
-                            </div>
-
-                            <div class="prose prose-invert max-w-none">
-                                <h4 class="font-display text-2xl uppercase tracking-wide mb-4">Student
-                                    Information System
-                                    Overhaul</h4>
-                                <p class="text-gray-400 mb-8 leading-relaxed">
-                                    A comprehensive redesign of the university's student information
-                                    system. Collaborating
-                                    with the IT department, I focused on restructuring the accessibility
-                                    of critical
-                                    academic data.
+                                <h5 class="font-mono text-xs text-swiss-red mb-4 uppercase tracking-widest">Additional
+                                    Artifacts</h5>
+                                <h4 class="font-display text-2xl uppercase mb-4 text-text-primary">Packaging & Labels
+                                </h4>
+                                <p class="text-sm text-text-secondary leading-relaxed mb-6">
+                                    Designed high-fidelity product labels ensuring brand consistency across physical
+                                    touchpoints. The system accommodates flavor variations (Naga, Carica, Mango) while
+                                    maintaining a unified visual identity.
                                 </p>
+                            </div>
 
-                                <!-- ELABORATION: Design Thought Process -->
+                            <!-- Label Showcase Container -->
+                            <div class="relative w-full space-y-4">
+                                <!-- Dragon Fruit Label -->
                                 <div
-                                    class="bg-[#151515] p-8 border-l-2 border-gray-700 hover:border-swiss-red transition-colors">
-                                    <h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-swiss-red">
-                                        Methodology
-                                        & Thought Process</h5>
-                                    <div class="grid md:grid-cols-2 gap-8">
-                                        <div>
-                                            <strong
-                                                class="text-white block mb-2 font-display uppercase tracking-wide">01.
-                                                Design Systems</strong>
-                                            <p class="text-sm text-gray-400">Created a standardized
-                                                component library
-                                                (Figma) to bridge the design-development gap, ensuring
-                                                implementation
-                                                consistency.</p>
-                                        </div>
-                                        <div>
-                                            <strong
-                                                class="text-white block mb-2 font-display uppercase tracking-wide">02.
-                                                Heuristic Evaluation</strong>
-                                            <p class="text-sm text-gray-400">Restructured dense academic
-                                                data into scannable
-                                                clusters (Associations vs Activity Units) to reduce
-                                                cognitive load.</p>
-                                        </div>
-                                        <div>
-                                            <strong
-                                                class="text-white block mb-2 font-display uppercase tracking-wide">03.
-                                                Navigation Flow</strong>
-                                            <p class="text-sm text-gray-400">Optimized user flows for
-                                                critical tasks like
-                                                scholarship applications, reducing total clicks by 40%.
-                                            </p>
-                                        </div>
-                                    </div>
+                                    class="group relative w-full aspect-[2.5/1] overflow-hidden border border-border-color bg-bg-primary">
+                                    <img src="Yogurt Naga.jpg" alt="Dragon Fruit Yogurt Label"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div
+                                        class="absolute bottom-2 left-2 bg-swiss-red text-white text-[9px] font-bold uppercase px-1.5 py-0.5 tracking-wider">
+                                        Dragon Fruit</div>
+                                </div>
+
+                                <!-- Carica Label -->
+                                <div
+                                    class="group relative w-full aspect-[2.5/1] overflow-hidden border border-border-color bg-bg-primary">
+                                    <img src="Yogurt Carica.jpg" alt="Carica Yogurt Label"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div
+                                        class="absolute bottom-2 left-2 bg-yellow-500 text-black text-[9px] font-bold uppercase px-1.5 py-0.5 tracking-wider">
+                                        Carica</div>
+                                </div>
+
+                                <!-- Mango Label -->
+                                <div
+                                    class="group relative w-full aspect-[2.5/1] overflow-hidden border border-border-color bg-bg-primary">
+                                    <img src="Yogurt Mango.jpg" alt="Mango Yogurt Label"
+                                        class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500">
+                                    <div
+                                        class="absolute bottom-2 left-2 bg-orange-500 text-black text-[9px] font-bold uppercase px-1.5 py-0.5 tracking-wider">
+                                        Mango</div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- Sidebar / Secondary Project Slot -->
-                        <div class="md:col-span-4 flex flex-col gap-8">
-                            <div class="p-8 bg-[#151515] border border-gray-800 h-full flex flex-col justify-between">
-                                <div>
-                                    <h5 class="font-mono text-xs text-swiss-red mb-4 uppercase tracking-widest">
-                                        Targeted UI
-                                        Work</h5>
-                                    <h4 class="font-display text-2xl uppercase mb-4">Student Affairs
-                                        Portal</h4>
-                                    <p class="text-sm text-gray-400 leading-relaxed mb-6">
-                                        Specific high-fidelity interface design for the Student Affairs
-                                        department, focusing
-                                        on the specialized needs of student organizations and event
-                                        management.
-                                    </p>
-                                </div>
-                                <div
-                                    class="w-full aspect-square border border-dashed border-gray-700 flex items-center justify-center text-gray-600 bg-black/20">
-                                    <span class="font-mono text-xs">[Prototype Available]</span>
-                                </div>
+                            <div class="mt-4 text-center">
+                                <span
+                                    class="font-mono text-[10px] text-text-secondary uppercase tracking-widest">[High-Fidelity
+                                    Print Assets]</span>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
-            <div class="border-t border-gray-800"></div>
+        <!-- Project 2: SIMAHA -->
+        <div class="border-t border-border-color">
+            <div class="group py-16">
+                <div class="flex flex-col md:flex-row md:items-start justify-between mb-10">
+                    <div class="flex items-start gap-6">
+                        <span class="font-mono text-swiss-red pt-2">03</span>
+                        <div>
+                            <h3 class="font-display text-5xl md:text-7xl uppercase mb-2 text-text-primary">Simaha</h3>
+                            <div class="flex gap-2">
+                                <span
+                                    class="bg-accent-subtle text-text-primary text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">Curricular
+                                    Project</span>
+                                <span
+                                    class="bg-accent-subtle text-text-secondary text-[10px] font-bold uppercase px-2 py-0.5 tracking-wider">UI/UX
+                                    Redesign</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right mt-4 md:mt-0">
+                        <p class="font-serif italic text-xl text-text-primary">Lead UI/UX Designer</p>
+                        <p class="font-mono text-xs text-text-secondary mt-1">University of Technology Yogyakarta</p>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-12 gap-12">
+                    <!-- Main System Project -->
+                    <div class="md:col-span-8">
+                        <div
+                            class="img-zoom-container w-full h-96 bg-bg-tertiary mb-8 relative group overflow-hidden border border-border-color">
+                            <!-- Placeholder for SIMAHA Dashboard -->
+                            <img src="/api/placeholder/1200/800" alt="SIMAHA Dashboard"
+                                class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700">
+                        </div>
+
+                        <div class="prose max-w-none">
+                            <h4 class="font-display text-2xl uppercase tracking-wide mb-4 text-text-primary">Student
+                                Information System Overhaul</h4>
+                            <p class="text-text-secondary mb-8 leading-relaxed">
+                                A comprehensive redesign of the university's student information system. Collaborating
+                                with the IT department, I focused on restructuring the accessibility of critical
+                                academic data.
+                            </p>
+
+                            <!-- ELABORATION: Design Thought Process -->
+                            <div
+                                class="bg-bg-tertiary p-8 border-l-2 border-text-secondary/30 hover:border-swiss-red transition-colors">
+                                <h5 class="font-mono text-xs uppercase tracking-widest mb-6 text-swiss-red">Methodology
+                                    & Thought Process</h5>
+                                <div class="grid md:grid-cols-2 gap-8">
+                                    <div>
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">01.
+                                            Design Systems</strong>
+                                        <p class="text-sm text-text-secondary">Created a standardized component library
+                                            (Figma) to bridge the design-development gap, ensuring implementation
+                                            consistency.</p>
+                                    </div>
+                                    <div>
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">02.
+                                            Heuristic Evaluation</strong>
+                                        <p class="text-sm text-text-secondary">Restructured dense academic data into
+                                            scannable clusters (Associations vs Activity Units) to reduce cognitive
+                                            load.</p>
+                                    </div>
+                                    <div>
+                                        <strong
+                                            class="text-text-primary block mb-2 font-display uppercase tracking-wide">03.
+                                            Navigation Flow</strong>
+                                        <p class="text-sm text-text-secondary">Optimized user flows for critical tasks
+                                            like scholarship applications, reducing total clicks by 40%.</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Sidebar / Secondary Project Slot -->
+                    <div class="md:col-span-4 flex flex-col gap-8">
+                        <div class="p-8 bg-bg-tertiary border border-border-color h-full flex flex-col justify-between">
+                            <div>
+                                <h5 class="font-mono text-xs text-swiss-red mb-4 uppercase tracking-widest">Targeted UI
+                                    Work</h5>
+                                <h4 class="font-display text-2xl uppercase mb-4 text-text-primary">Student Affairs
+                                    Portal</h4>
+                                <p class="text-sm text-text-secondary leading-relaxed mb-6">
+                                    Specific high-fidelity interface design for the Student Affairs department, focusing
+                                    on the specialized needs of student organizations and event management.
+                                </p>
+                            </div>
+                            <div
+                                class="w-full aspect-square border border-dashed border-border-color flex items-center justify-center text-text-secondary bg-bg-primary">
+                                <span class="font-mono text-xs">[Prototype Available]</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="border-t border-border-color"></div>
     </section>
 
     <!-- About & Skills -->
-    <section id="about" class="py-24 px-6 md:px-12 lg:px-24 bg-off-white text-off-black">
+    <section id="about" class="py-24 px-6 md:px-12 lg:px-24 bg-bg-secondary text-text-primary">
         <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
             <div>
                 <div class="flex items-center gap-4 mb-8">
@@ -447,83 +585,88 @@
                     <h2 class="font-serif italic text-4xl md:text-5xl">Statement of Intent</h2>
                 </div>
 
-                <p class="text-lg leading-relaxed mb-8 font-light">
+                <p class="text-lg leading-relaxed mb-8 font-light text-text-primary">
                     My professional philosophy is grounded in <strong class="font-bold">learning from the past while
                         planning for the future</strong>. I actively invest time in seizing opportunities to create
                     value.
                 </p>
-                <p class="text-lg leading-relaxed mb-12 font-light">
+                <p class="text-lg leading-relaxed mb-12 font-light text-text-primary">
                     I aim to bridge the gap between <strong class="font-bold">robust engineering</strong> and <strong
                         class="font-bold">seamless user experience</strong>—a goal I intend to further at Politecnico di
                     Milano.
                 </p>
 
-                <h3 class="font-display font-bold text-2xl uppercase border-b-2 border-black pb-2 mb-6">Education</h3>
+                <h3 class="font-display font-bold text-2xl uppercase border-b-2 border-text-primary pb-2 mb-6">Education
+                </h3>
                 <ul class="space-y-8">
-                    <li class="pl-4 border-l-2 border-gray-300 hover:border-swiss-red transition-colors">
+                    <li class="pl-4 border-l-2 border-border-color hover:border-swiss-red transition-colors">
                         <div class="flex justify-between items-baseline mb-1">
                             <div class="font-bold text-xl">University of Technology Yogyakarta</div>
-                            <div class="font-mono text-xs text-gray-500">2020 - 2024</div>
+                            <div class="font-mono text-xs text-text-secondary">2020 - 2024</div>
                         </div>
                         <div class="text-md mb-1">Bachelor Degree of Information System</div>
-                        <div class="text-sm font-mono text-gray-600">Final Grade: 3.56 / 4.00</div>
+                        <div class="text-sm font-mono text-text-secondary">Final Grade: 3.56 / 4.00</div>
                     </li>
-                    <li class="pl-4 border-l-2 border-gray-300 hover:border-swiss-red transition-colors">
+                    <li class="pl-4 border-l-2 border-border-color hover:border-swiss-red transition-colors">
                         <div class="flex justify-between items-baseline mb-1">
                             <div class="font-bold text-xl">Google UX Design Professional</div>
-                            <div class="font-mono text-xs text-gray-500">2025 - Current</div>
+                            <div class="font-mono text-xs text-text-secondary">2025 - Current</div>
                         </div>
                         <div class="text-md mb-1">Coursera Professional Certification</div>
-                        <div class="text-sm font-mono text-gray-600">Focus: IxD, Visual Design, Prototyping</div>
+                        <div class="text-sm font-mono text-text-secondary">Focus: IxD, Visual Design, Prototyping</div>
                     </li>
                 </ul>
             </div>
 
             <div>
-                <h3 class="font-display font-bold text-6xl uppercase mb-12 text-gray-200 select-none">Skills</h3>
+                <h3 class="font-display font-bold text-6xl uppercase mb-12 text-accent-subtle select-none">Skills</h3>
 
                 <div class="space-y-12">
                     <div>
                         <h4
-                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-gray-300 pb-2 mb-4 text-gray-500">
+                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-border-color pb-2 mb-4 text-text-secondary">
                             Digital & Design</h4>
                         <div class="flex flex-wrap gap-3">
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Figma</span>
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Canva</span>
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Image
+                            <span
+                                class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Figma</span>
+                            <span
+                                class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Canva</span>
+                            <span class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Image
                                 Editing</span>
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Digital
+                            <span class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Digital
                                 Marketing</span>
                         </div>
                     </div>
 
                     <div>
                         <h4
-                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-gray-300 pb-2 mb-4 text-gray-500">
+                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-border-color pb-2 mb-4 text-text-secondary">
                             Technical Engineering</h4>
                         <div class="flex flex-wrap gap-3">
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Web Development
-                                (FE/BE)</span>
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Database
+                            <span class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Web
+                                Development (FE/BE)</span>
+                            <span class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Database
                                 Management</span>
-                            <span class="px-3 py-1 border border-black rounded-full text-sm font-medium">Information
+                            <span
+                                class="px-3 py-1 border border-text-primary rounded-full text-sm font-medium">Information
                                 Architecture</span>
                         </div>
                     </div>
 
                     <div>
                         <h4
-                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-gray-300 pb-2 mb-4 text-gray-500">
+                            class="font-mono text-xs tracking-[0.2em] uppercase border-b border-border-color pb-2 mb-4 text-text-secondary">
                             Languages</h4>
                         <div class="space-y-3">
-                            <div class="flex justify-between items-center border-b border-gray-100 pb-1">
+                            <div class="flex justify-between items-center border-b border-border-color pb-1">
                                 <span>Indonesian</span>
-                                <span class="font-bold text-sm bg-black text-white px-2 py-0.5">Native</span>
+                                <span
+                                    class="font-bold text-sm bg-text-primary text-bg-primary px-2 py-0.5">Native</span>
                             </div>
-                            <div class="flex justify-between items-center border-b border-gray-100 pb-1">
+                            <div class="flex justify-between items-center border-b border-border-color pb-1">
                                 <span>English</span>
-                                <span class="font-bold text-sm bg-black text-white px-2 py-0.5">C1 Speaking / B2
-                                    Writing</span>
+                                <span class="font-bold text-sm bg-text-primary text-bg-primary px-2 py-0.5">C1 Speaking
+                                    / B2 Writing</span>
                             </div>
                         </div>
                     </div>
@@ -561,6 +704,35 @@
     </footer>
 
     <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const sunIcon = document.getElementById('sun-icon');
+        const moonIcon = document.getElementById('moon-icon');
+        const htmlElement = document.documentElement;
+
+        // Function to update icon visibility
+        function updateIcons(isDark) {
+            if (isDark) {
+                sunIcon.classList.remove('hidden');
+                moonIcon.classList.add('hidden');
+            } else {
+                sunIcon.classList.add('hidden');
+                moonIcon.classList.remove('hidden');
+            }
+        }
+
+        // Initialize icons based on current theme
+        updateIcons(htmlElement.getAttribute('data-theme') === 'dark');
+
+        themeToggleBtn.addEventListener('click', () => {
+            const currentTheme = htmlElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+            htmlElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateIcons(newTheme === 'dark');
+        });
+
         // Simple animation for elements appearing on scroll
         const observerOptions = {
             threshold: 0.1
