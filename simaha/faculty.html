@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low-Fi Wireframe - Faculty of Business (WIP)</title>
+    <!-- Importing a "Sketchy" font to mimic Balsamiq -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --sketch-color: #2c3e50;
+            --bg-color: #ffffff;
+            --placeholder-color: #95a5a6;
+        }
+        body {
+            font-family: 'Patrick Hand', cursive;
+            color: var(--sketch-color);
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--placeholder-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* The Balsamiq "Wobbly" Border Effect */
+        .wf-box {
+            border: 2px solid var(--sketch-color);
+            border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+            background: white;
+            position: relative;
+        }
+
+        /* Dashed Box for "Incomplete" items */
+        .wf-dashed {
+            border: 2px dashed var(--placeholder-color);
+            background: transparent;
+            border-radius: 5px;
+        }
+        
+        .wf-btn {
+            background: #fff;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        /* "Greeking" - Turns text into squiggly lines */
+        .wf-squiggle {
+            color: transparent !important;
+            text-decoration: underline wavy var(--sketch-color);
+            text-decoration-thickness: 3px;
+            text-decoration-skip-ink: none; 
+            user-select: none;
+            opacity: 0.8;
+            cursor: default;
+        }
+        
+        .wf-squiggle-white {
+            text-decoration-color: white;
+        }
+
+        /* Dark Card Style (for the specific blue cards in the reference) */
+        .wf-card-dark {
+            background-color: #2c3e50;
+            color: white;
+        }
+
+        /* Breadcrumb separator */
+        .wf-breadcrumb-separator::after {
+            content: "/";
+            margin: 0 10px;
+            color: var(--placeholder-color);
+        }
+    </style>
+</head>
+<body class="p-4">
+
+    <!-- NAV BAR (Reused) -->
+    <nav class="w-full p-4 mb-12 flex flex-wrap justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+            <div class="wf-box w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl">S</div>
+            <span class="text-2xl font-bold">SIMAHA</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 text-lg opacity-70">
+            <a href="#" class="wf-squiggle">Campus Life</a>
+            <a href="#" class="wf-squiggle">Scholarships</a>
+            <a href="#" class="wf-squiggle">Achievements</a>
+            <a href="#" class="wf-squiggle">Support</a>
+        </div>
+
+        <div class="flex gap-4 items-center">
+            <button class="wf-btn px-6 py-1 font-bold opacity-50">
+                <span class="wf-squiggle">LOGIN</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HEADER / BREADCRUMB SECTION -->
+    <section class="max-w-6xl mx-auto mb-16">
+        <!-- Breadcrumbs -->
+        <div class="flex text-sm mb-8 opacity-60">
+            <span class="wf-breadcrumb-separator wf-squiggle">Home</span>
+            <span class="wf-breadcrumb-separator wf-squiggle">Student Association</span>
+            <span class="wf-squiggle font-bold">Faculty of Business & Humanities</span>
+        </div>
+
+        <!-- Page Title -->
+        <div class="mb-4">
+            <span class="text-lg opacity-60 wf-squiggle">Student Association</span>
+        </div>
+        <h1 class="text-5xl font-bold leading-tight mb-8 wf-squiggle">Faculty of Business & Humanities</h1>
+        
+        <!-- Divider -->
+        <div class="w-full border-b-2 border-dashed border-gray-300"></div>
+    </section>
+
+    <!-- ASSOCIATIONS GRID -->
+    <section class="max-w-6xl mx-auto mb-32">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            
+            <!-- Card 1: HIMAHI (Solid) -->
+            <div class="wf-box h-64 flex flex-col justify-end p-0 overflow-hidden shadow-md">
+                <div class="h-full bg-gray-100 flex items-center justify-center border-b-2 border-black">
+                    <span class="opacity-20 text-4xl font-bold">IMG</span>
+                </div>
+                <div class="bg-[#2c3e50] p-4">
+                    <p class="text-white font-bold leading-tight">
+                        <span class="wf-squiggle wf-squiggle-white">International Relations Student Association (HIMAHI)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 2: Accounting (Dashed/WIP) -->
+            <div class="wf-dashed h-64 flex flex-col justify-end p-2 border-4">
+                <div class="flex-grow flex items-center justify-center opacity-30">
+                    [ Icon ]
+                </div>
+                <div class="bg-gray-200 p-2 rounded">
+                    <p class="font-bold leading-tight wf-squiggle">Accounting Student Association (HIMASI)</p>
+                </div>
+            </div>
+
+            <!-- Card 3: Communication (Solid) -->
+            <div class="wf-box h-64 flex flex-col justify-end p-0 overflow-hidden shadow-md">
+                <div class="h-full bg-gray-100 flex items-center justify-center border-b-2 border-black">
+                    <span class="opacity-20 text-4xl font-bold">IMG</span>
+                </div>
+                <div class="bg-[#2c3e50] p-4">
+                    <p class="text-white font-bold leading-tight">
+                        <span class="wf-squiggle wf-squiggle-white">Communication Science Student Association (HIMAKOM)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 4: English (Dashed/WIP) -->
+            <div class="wf-dashed h-64 flex flex-col justify-end p-2 border-4">
+                <div class="flex-grow flex items-center justify-center opacity-30">
+                    [ Icon ]
+                </div>
+                <div class="bg-gray-200 p-2 rounded">
+                    <p class="font-bold leading-tight wf-squiggle">English Student Association (HMI)</p>
+                </div>
+            </div>
+
+            <!-- Card 5: Management (Solid) -->
+            <div class="wf-box h-64 flex flex-col justify-end p-0 overflow-hidden shadow-md">
+                <div class="h-full bg-gray-100 flex items-center justify-center border-b-2 border-black">
+                    <span class="opacity-20 text-4xl font-bold">IMG</span>
+                </div>
+                <div class="bg-[#2c3e50] p-4">
+                    <p class="text-white font-bold leading-tight">
+                        <span class="wf-squiggle wf-squiggle-white">Management Student Association (HMM)</span>
+                    </p>
+                </div>
+            </div>
+
+            <!-- Card 6: Education (Dashed/WIP) -->
+            <div class="wf-dashed h-64 flex flex-col justify-end p-2 border-4">
+                <div class="flex-grow flex items-center justify-center opacity-30">
+                    [ Icon ]
+                </div>
+                <div class="bg-gray-200 p-2 rounded">
+                    <p class="font-bold leading-tight wf-squiggle">Education Student Association (HMP)</p>
+                </div>
+            </div>
+
+            <!-- Card 7: Psychology (Solid - Single item in last row) -->
+            <div class="wf-box h-64 flex flex-col justify-end p-0 overflow-hidden shadow-md">
+                <div class="h-full bg-gray-100 flex items-center justify-center border-b-2 border-black">
+                    <span class="opacity-20 text-4xl font-bold">IMG</span>
+                </div>
+                <div class="bg-[#2c3e50] p-4">
+                    <p class="text-white font-bold leading-tight">
+                        <span class="wf-squiggle wf-squiggle-white">Psychology Student Association (HIMAPSI)</span>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER (Reused) -->
+    <footer class="border-t-4 border-black py-12 opacity-60">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-start">
+            <div class="w-1/4">
+                <div class="w-12 h-12 rounded-full border border-black mb-4"></div>
+                <div class="h-4 w-32 wf-squiggle mb-2">Student Affairs</div>
+                <div class="h-4 w-48 wf-squiggle">Address details here</div>
+            </div>
+            <div class="w-1/2 text-right">
+                <ul class="space-y-4">
+                    <li class="h-4 w-24 wf-squiggle ml-auto">About Us</li>
+                    <li class="h-4 w-32 wf-squiggle ml-auto">Profile Link</li>
+                    <li class="h-4 w-20 wf-squiggle ml-auto">Org Chart</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

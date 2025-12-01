@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low-Fi Wireframe - SIMAHA Landing (WIP)</title>
+    <!-- Importing a "Sketchy" font to mimic Balsamiq -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --sketch-color: #2c3e50;
+            --bg-color: #ffffff;
+            --placeholder-color: #95a5a6;
+        }
+        body {
+            font-family: 'Patrick Hand', cursive;
+            color: var(--sketch-color);
+            background-color: var(--bg-color);
+            /* Add a grid pattern background for that 'drafting paper' feel */
+            background-image: radial-gradient(var(--placeholder-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* The Balsamiq "Wobbly" Border Effect */
+        .wf-box {
+            border: 2px solid var(--sketch-color);
+            border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+            background: white;
+            position: relative;
+        }
+
+        /* Dashed Box for "Incomplete" items */
+        .wf-dashed {
+            border: 2px dashed var(--placeholder-color);
+            background: transparent;
+            border-radius: 5px;
+        }
+        
+        .wf-btn {
+            background: #fff;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        /* "Greeking" - Turns text into squiggly lines */
+        .wf-squiggle {
+            color: transparent !important;
+            text-decoration: underline wavy var(--sketch-color);
+            text-decoration-thickness: 3px;
+            /* Ensures the wavy line isn't broken by the letters */
+            text-decoration-skip-ink: none; 
+            user-select: none;
+            opacity: 0.8;
+            cursor: default;
+        }
+        
+        /* Specific override for dark buttons so the squiggle is visible */
+        .wf-squiggle-white {
+            text-decoration-color: white;
+        }
+
+        /* Image Placeholder - Rougher look */
+        .wf-img-placeholder {
+            background: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            border: 1px solid var(--sketch-color);
+        }
+        /* Crossed out lines for images */
+        .wf-img-placeholder::before, .wf-img-placeholder::after {
+            content: "";
+            position: absolute;
+            background: var(--sketch-color);
+            height: 1px;
+            width: 120%;
+        }
+        .wf-img-placeholder::before { transform: rotate(15deg); }
+        .wf-img-placeholder::after { transform: rotate(-15deg); }
+
+        /* Sticky Note for TODOs */
+        .wf-note {
+            background-color: #f1c40f;
+            color: black;
+            padding: 10px;
+            transform: rotate(-2deg);
+            box-shadow: 2px 2px 5px rgba(0,0,0,0.2);
+            font-size: 0.9rem;
+            position: absolute;
+            z-index: 10;
+        }
+        
+    </style>
+</head>
+<body class="p-4">
+
+    <!-- NAV BAR -->
+    <nav class="w-full p-4 mb-12 flex flex-wrap justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+            <div class="wf-box w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl">S</div>
+            <!-- SIMAHA STAYS READABLE -->
+            <span class="text-2xl font-bold">SIMAHA</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 text-lg opacity-70">
+            <!-- Navbar links now squiggled -->
+            <a href="#" class="wf-squiggle">Campus Life</a>
+            <a href="#" class="wf-squiggle">Scholarships</a>
+            <a href="#" class="wf-squiggle">Achievements</a>
+            <a href="#" class="wf-squiggle">Support</a>
+        </div>
+
+        <div class="flex gap-4 items-center">
+            <!-- Login button squiggled -->
+            <button class="wf-btn px-6 py-1 font-bold opacity-50">
+                <span class="wf-squiggle">LOGIN</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="max-w-6xl mx-auto mb-24 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative">
+        <!-- Sticky Note Removed -->
+
+        <div>
+            <h1 class="text-5xl font-bold leading-tight mb-4 wf-squiggle">Empowering students to thrive in every aspect</h1>
+            <p class="text-xl mb-8 wf-squiggle">Lorem ipsum dolor sit amet content placeholder text for wireframe purposes only.</p>
+            <div class="flex gap-4">
+                <!-- Dark button needs white squiggle -->
+                <button class="wf-btn px-6 py-3 bg-black text-white font-bold transform -rotate-1" style="--sketch-color: white;">
+                    <span class="wf-squiggle wf-squiggle-white">Explore Campus</span>
+                </button>
+                <button class="px-6 py-3 underline decoration-dashed text-gray-500">
+                    <span class="wf-squiggle">Discover...</span>
+                </button>
+            </div>
+        </div>
+        <div class="h-64 w-full border-2 border-dashed border-gray-400 flex items-center justify-center text-gray-400">
+            <span class="wf-squiggle">Hero Image Placement</span>
+        </div>
+    </section>
+
+    <!-- CAMPUS LIFE -->
+    <section class="max-w-6xl mx-auto mb-24">
+        <h2 class="text-3xl font-bold mb-8 wf-squiggle">Campus Life</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+            <div class="relative">
+                <div class="wf-img-placeholder h-48 mb-2 w-3/4 mx-auto rotate-1"></div>
+                <div class="text-center font-bold text-xl mt-4 wf-squiggle">Student Association</div>
+            </div>
+            <div class="wf-dashed p-4 flex flex-col items-center justify-center h-64">
+                <span class="text-2xl opacity-30 wf-squiggle">+ Add Component</span>
+                <div class="font-bold text-xl mt-4 text-gray-400 wf-squiggle">Student Activity Units</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EVENTS -->
+    <section class="w-full py-16 mb-24 border-y-2 border-dashed border-gray-300">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-end mb-8">
+                <h2 class="text-2xl font-bold wf-squiggle">Events (Carousel?)</h2>
+                <div class="flex gap-2 opacity-30">
+                    <div class="w-8 h-8 border border-black rounded-full"></div>
+                    <div class="w-8 h-8 border border-black rounded-full"></div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="wf-box p-4 opacity-80">
+                    <h3 class="font-bold text-lg mb-2 wf-squiggle">LPDP scholarship</h3>
+                    <div class="text-sm mb-4 text-gray-500 wf-squiggle">June 16, 2025</div>
+                    <p class="mb-4 wf-squiggle">This is just some placeholder text to show where the description goes.</p>
+                </div>
+                <div class="p-4 border-2 border-dashed border-gray-300 rounded opacity-50">
+                    <h3 class="font-bold text-lg mb-2 wf-squiggle">Chickens don't clap!</h3>
+                    <div class="text-sm mb-4 text-gray-500 wf-squiggle">Feb 02, 2025</div>
+                    <p class="mb-4 wf-squiggle">More placeholder text goes here for the event.</p>
+                </div>
+                <div class="p-4 opacity-50">
+                    <h3 class="font-bold text-lg mb-2 wf-squiggle">Let us wax poetic</h3>
+                    <div class="text-sm mb-4 text-gray-500 wf-squiggle">Jan 23, 2025</div>
+                    <p class="mb-4 wf-squiggle">Text placeholder for the third event card.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS -->
+    <section class="max-w-6xl mx-auto mb-24">
+        <h2 class="text-3xl font-bold mb-8 wf-squiggle">Achievements</h2>
+        
+        <div class="flex flex-col md:flex-row gap-8">
+            <div class="w-full md:w-1/2 h-64 border-2 border-black bg-gray-100 flex items-center justify-center relative">
+                <span class="z-10 wf-squiggle">Main Story Image</span>
+                <div class="absolute -top-3 left-1/2 w-16 h-6 bg-gray-200 opacity-50 transform -rotate-2"></div>
+            </div>
+            <div class="w-full md:w-1/2 flex flex-col justify-center">
+                <h3 class="text-2xl font-bold mb-4 wf-squiggle">UTY IT Students Win...</h3>
+                <p class="mb-6 wf-squiggle">Full description of the achievement goes here. It should be roughly three lines long.</p>
+                <div class="w-32 h-10 border-2 border-dashed border-black rounded-full flex items-center justify-center text-sm">
+                    <span class="wf-squiggle">Read Button</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-3 gap-4 mt-12 opacity-40">
+            <div class="h-24 border border-black flex items-center justify-center wf-squiggle">Box 1</div>
+            <div class="h-24 border border-black flex items-center justify-center wf-squiggle">Box 2</div>
+            <div class="h-24 border border-black flex items-center justify-center wf-squiggle">Box 3</div>
+        </div>
+    </section>
+
+    <!-- SCHOLARSHIPS -->
+    <section class="max-w-6xl mx-auto mb-24">
+        <h2 class="text-3xl font-bold mb-8 wf-squiggle">Scholarships & Funding</h2>
+        <div class="flex flex-wrap gap-8">
+            <div class="wf-box p-8 w-full md:w-5/12 min-h-[200px] flex flex-col justify-between transform rotate-1">
+                <h3 class="text-xl font-bold wf-squiggle">Internal Scholarships</h3>
+                <p class="wf-squiggle">Description text about internal funding opportunities.</p>
+                <button class="text-sm underline self-start"><span class="wf-squiggle">Learn More</span></button>
+            </div>
+            
+            <div class="w-full md:w-5/12 min-h-[200px] border-2 border-dashed border-gray-400 rounded flex items-center justify-center text-center p-4">
+                <span class="text-gray-400 wf-squiggle">External / Abroad<br>(Layout TBD)</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="border-t-4 border-black py-12 opacity-60">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-start">
+            <div class="w-1/4">
+                <div class="w-12 h-12 rounded-full border border-black mb-4"></div>
+                <div class="h-4 w-32 wf-squiggle mb-2">Student Affairs</div>
+                <div class="h-4 w-48 wf-squiggle">Address details here</div>
+            </div>
+            <div class="w-1/2 text-right">
+                <ul class="space-y-4">
+                    <li class="h-4 w-24 wf-squiggle ml-auto">About Us</li>
+                    <li class="h-4 w-32 wf-squiggle ml-auto">Profile Link</li>
+                    <li class="h-4 w-20 wf-squiggle ml-auto">Org Chart</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>

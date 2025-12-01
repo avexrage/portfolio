@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Low-Fi Wireframe - Scholarships Page (WIP)</title>
+    <!-- Importing a "Sketchy" font to mimic Balsamiq -->
+    <link href="https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --sketch-color: #2c3e50;
+            --bg-color: #ffffff;
+            --placeholder-color: #95a5a6;
+        }
+        body {
+            font-family: 'Patrick Hand', cursive;
+            color: var(--sketch-color);
+            background-color: var(--bg-color);
+            background-image: radial-gradient(var(--placeholder-color) 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+        
+        /* The Balsamiq "Wobbly" Border Effect */
+        .wf-box {
+            border: 2px solid var(--sketch-color);
+            border-radius: 2px 255px 3px 25px / 255px 5px 225px 3px;
+            background: white;
+            position: relative;
+        }
+
+        /* Dashed Box for "Incomplete" items */
+        .wf-dashed {
+            border: 2px dashed var(--placeholder-color);
+            background: transparent;
+            border-radius: 5px;
+        }
+        
+        .wf-btn {
+            background: #fff;
+            border: 2px solid var(--sketch-color);
+            border-radius: 255px 15px 225px 15px / 15px 225px 15px 255px;
+            cursor: pointer;
+            text-align: center;
+            display: inline-block;
+        }
+
+        /* "Greeking" - Turns text into squiggly lines */
+        .wf-squiggle {
+            color: transparent !important;
+            text-decoration: underline wavy var(--sketch-color);
+            text-decoration-thickness: 3px;
+            text-decoration-skip-ink: none; 
+            user-select: none;
+            opacity: 0.8;
+            cursor: default;
+        }
+        
+        .wf-squiggle-white {
+            text-decoration-color: white;
+        }
+
+        /* Breadcrumb separator */
+        .wf-breadcrumb-separator::after {
+            content: "/";
+            margin: 0 10px;
+            color: var(--placeholder-color);
+        }
+    </style>
+</head>
+<body class="p-4">
+
+    <!-- NAV BAR (Reused) -->
+    <nav class="w-full p-4 mb-12 flex flex-wrap justify-between items-center gap-4">
+        <div class="flex items-center gap-2">
+            <div class="wf-box w-10 h-10 rounded-full flex items-center justify-center font-bold text-xl">S</div>
+            <span class="text-2xl font-bold">SIMAHA</span>
+        </div>
+        
+        <div class="hidden md:flex gap-8 text-lg opacity-70">
+            <a href="#" class="wf-squiggle">Campus Life</a>
+            <a href="#" class="wf-squiggle">Scholarships</a>
+            <a href="#" class="wf-squiggle">Achievements</a>
+            <a href="#" class="wf-squiggle">Support</a>
+        </div>
+
+        <div class="flex gap-4 items-center">
+            <button class="wf-btn px-6 py-1 font-bold opacity-50">
+                <span class="wf-squiggle">LOGIN</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HEADER / HERO SECTION -->
+    <section class="max-w-6xl mx-auto mb-16 px-4">
+        <!-- Breadcrumbs / Small Title -->
+        <div class="mb-4">
+            <span class="text-lg opacity-60 wf-squiggle">Scholarships & Funding</span>
+        </div>
+        
+        <!-- Main Title -->
+        <h1 class="text-5xl font-bold leading-tight mb-8">
+            <span class="wf-squiggle">Study at UTY (Internal</span><br>
+            <span class="wf-squiggle">Scholarships)</span>
+        </h1>
+        
+        <!-- Divider -->
+        <div class="w-full border-b-2 border-dashed border-gray-300"></div>
+    </section>
+
+    <!-- MAIN CONTENT (Text Heavy) -->
+    <section class="max-w-4xl mx-auto mb-32 px-4">
+        
+        <!-- Requirements Section -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 border-b-2 border-black inline-block pb-1">
+                <span class="wf-squiggle">Requirements</span>
+            </h2>
+            
+            <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+             <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+        </div>
+
+        <!-- How to Apply Section -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 border-b-2 border-black inline-block pb-1">
+                <span class="wf-squiggle">How to Apply</span>
+            </h2>
+            
+            <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+            <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+             <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+        </div>
+
+        <!-- Deadlines Section -->
+        <div class="mb-12">
+            <h2 class="text-3xl font-bold mb-6 border-b-2 border-black inline-block pb-1">
+                <span class="wf-squiggle">Deadlines</span>
+            </h2>
+            
+            <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+            <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+            <p class="mb-4 text-lg leading-relaxed wf-squiggle">
+                Lorem ipsum dolor sit amet consectetur adipiscing elit. Quisque faucibus ex sapien vitae pellentesque sem placerat. In id cursus mi pretium tellus duis convallis. Tempus leo eu aenean sed diam urna tempor.
+            </p>
+        </div>
+
+    </section>
+
+    <!-- FOOTER (Reused) -->
+    <footer class="border-t-4 border-black py-12 opacity-60">
+        <div class="max-w-6xl mx-auto px-4 flex justify-between items-start">
+            <div class="w-1/4">
+                <div class="w-12 h-12 rounded-full border border-black mb-4"></div>
+                <div class="h-4 w-32 wf-squiggle mb-2">Student Affairs</div>
+                <div class="h-4 w-48 wf-squiggle">Address details here</div>
+            </div>
+            <div class="w-1/2 text-right">
+                <ul class="space-y-4">
+                    <li class="h-4 w-24 wf-squiggle ml-auto">About Us</li>
+                    <li class="h-4 w-32 wf-squiggle ml-auto">Profile Link</li>
+                    <li class="h-4 w-20 wf-squiggle ml-auto">Org Chart</li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
