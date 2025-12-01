@@ -1,6 +1,6 @@
 function Hero() {
     return (
-        <header className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20">
+        <header id="hero" className="min-h-screen flex flex-col justify-center px-6 md:px-12 lg:px-24 pt-20">
             <div className="max-w-7xl w-full">
                 <div className="flex items-center gap-4 mb-6 animate-fade-in-up">
                     <div className="h-px w-12 bg-swiss-red"></div>

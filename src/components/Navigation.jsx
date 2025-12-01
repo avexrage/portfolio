@@ -7,9 +7,9 @@ function Navigation({ theme, toggleTheme }) {
         <>
             {/* Navigation */}
             <nav className="fixed w-full top-0 z-50 mix-blend-difference px-6 py-6 flex justify-between items-center text-white">
-                <div className="font-display font-bold text-xl tracking-tighter uppercase">
+                <a href="#hero" className="font-display font-bold text-xl tracking-tighter uppercase cursor-pointer hover:opacity-80 transition-opacity">
                     M. Faris Sidqi<span className="text-swiss-red">.</span>
-                </div>
+                </a>
                 <div className="flex items-center gap-8">
                     <div className="hidden md:flex gap-8 font-sans text-sm uppercase tracking-widest">
                         <a href="#thesis" className="hover:text-swiss-red transition-colors">Academic Research</a>
