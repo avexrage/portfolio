@@ -1,12 +1,31 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 function Navigation({ theme, toggleTheme }) {
     const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+    const [isVisible, setIsVisible] = useState(true);
+    const lastScrollY = useRef(0);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            const currentScrollY = window.scrollY;
+
+            if (currentScrollY < lastScrollY.current || currentScrollY < 10) {
+                setIsVisible(true);
+            } else if (currentScrollY > lastScrollY.current && currentScrollY > 10) {
+                setIsVisible(false);
+            }
+
+            lastScrollY.current = currentScrollY;
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
 
     return (
         <>
             {/* Navigation */}
-            <nav className="fixed w-full top-0 z-50 mix-blend-difference px-6 py-6 flex justify-between items-center text-white">
+            <nav className={`fixed w-full top-0 z-50 mix-blend-difference px-6 py-6 flex justify-between items-center text-white transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'}`}>
                 <a href="#hero" className="font-display font-bold text-xl tracking-tighter uppercase cursor-pointer hover:opacity-80 transition-opacity">
                     M. Faris Sidqi<span className="text-swiss-red">.</span>
                 </a>
