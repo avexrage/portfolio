@@ -589,408 +589,93 @@
                         <!-- NEW: Original Interface (The "Before" State) -->
                         <div class="mb-12">
                             <strong class="text-swiss-red font-mono text-xs uppercase block mb-4">00. The Starting
-                                Point</strong>
-                            <div class="grid md:grid-cols-12 gap-8 items-start">
-                                <div class="md:col-span-7">
-                                    <div
-                                        class="group relative aspect-video overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="ui before.jpg" alt="Original SIMAHA Interface"
-                                            class="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Original
-                                                Interface (Pre-Redesign)</span>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="md:col-span-5 flex flex-col justify-center">
-                                    <h5 class="text-text-primary font-bold mb-2">Legacy Challenges</h5>
-                                    <p class="text-sm text-text-secondary leading-relaxed mb-4">
-                                        The original system suffered from cognitive overload, with a dense,
-                                        unprioritized grid of icons that made navigation inefficient. Users struggled to
-                                        distinguish between Faculty Associations (HMJ) and Activity Units (UKM) due to
-                                        lack of visual hierarchy.
-                                    </p>
-                                    <div class="flex gap-2">
-                                        <span
-                                            class="text-[10px] bg-red-900/20 text-red-400 border border-red-900/30 px-2 py-1 uppercase">High
-                                            Cognitive Load</span>
-                                        <span
-                                            class="text-[10px] bg-red-900/20 text-red-400 border border-red-900/30 px-2 py-1 uppercase">Poor
-                                            Wayfinding</span>
-                                    </div>
-                                </div>
-                            </div>
                         </div>
+                    </div>
 
-                        <!-- UX Development Cycle Narrative -->
-                        <div class="mb-8 border border-border-color bg-bg-secondary p-6 md:p-8 rounded-sm">
-                            <div class="flex items-center gap-3 mb-6">
-                                <span class="flex h-3 w-3 relative">
-                                    <span class="relative inline-flex rounded-full h-3 w-3 bg-accent-subtle"></span>
-                                </span>
-                                <h5 class="font-display text-lg uppercase tracking-wider text-text-primary">UX
-                                    Development Cycle</h5>
-                            </div>
-
-                            <!-- Research (Step 1) -->
-                            <div class="mb-8">
-                                <strong class="text-swiss-red font-mono text-xs uppercase block mb-2">01. Discovery &
-                                    User Research</strong>
-                                <p class="text-sm text-text-secondary mb-4">
-                                    Initiated the project by interviewing the lead engineer to define the core "Who" and
-                                    "Why." Identified the primary user base as the entire student body of UTY.
-                                </p>
-                            </div>
-
-                            <!-- Define Objectives (Step 2) -->
-                            <div class="mb-8">
-                                <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">02. Define
-                                    Objectives</strong>
-                                <p class="text-sm text-text-secondary mb-4">
-                                    Based on stakeholder interviews, I crystallized three main functional objectives for
-                                    the system overhaul:
-                                </p>
-                                <div class="grid md:grid-cols-2 gap-6">
-                                    <div class="space-y-3">
-                                        <div class="border-l-2 border-border-color pl-3">
-                                            <strong class="text-text-primary text-xs uppercase block mb-1">Objective
-                                                A</strong>
-                                            <p class="text-xs text-text-secondary">Information related to student
-                                                achievements and activities.</p>
-                                        </div>
-                                        <div class="border-l-2 border-border-color pl-3">
-                                            <strong class="text-text-primary text-xs uppercase block mb-1">Objective
-                                                B</strong>
-                                            <p class="text-xs text-text-secondary">Scholarship Information (Internal &
-                                                Partner opportunities).</p>
-                                        </div>
-                                        <div class="border-l-2 border-border-color pl-3">
-                                            <strong class="text-text-primary text-xs uppercase block mb-1">Objective
-                                                C</strong>
-                                            <p class="text-xs text-text-secondary">General Information on Student
-                                                Activity Units (UKM) and Students Association (HMJ).</p>
-                                        </div>
-                                    </div>
-
-                                    <!-- Personas -->
-                                    <div class="bg-bg-tertiary p-4 border border-border-color">
-                                        <strong
-                                            class="text-text-primary font-mono text-xs uppercase block mb-2 border-b border-border-color pb-2">Target
-                                            Personas</strong>
-                                        <ul class="text-xs text-text-secondary space-y-3">
-                                            <li class="flex gap-2 items-start">
-                                                <i class="fas fa-users text-accent-subtle mt-0.5"></i>
-                                                <span><strong>The Organizational Student:</strong> Every student who
-                                                    wants to get information about the Student Association and Activity
-                                                    Units.</span>
-                                            </li>
-                                            <li class="flex gap-2 items-start">
-                                                <i class="fas fa-graduation-cap text-accent-subtle mt-0.5"></i>
-                                                <span><strong>The Opportunity Seeker:</strong> Students who wish to
-                                                    explore scholarship opportunities provided by the campus and campus
-                                                    partners.</span>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Wireframe Gallery (Balsamiq) -->
-                            <div class="mt-10 pt-8 border-t border-border-color">
-                                <strong class="text-swiss-red font-mono text-xs uppercase block mb-6">03. Wireframing
-                                    Phase (Balsamiq)</strong>
-                                <p class="text-sm text-text-secondary mb-6">
-                                    Utilized low-fidelity wireframes to rapidly validate information architecture
-                                    without the distraction of visual aesthetics. This phase allowed for quick iteration
-                                    on layout and content placement.
-                                </p>
-
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <!-- Landing Page -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="landingpage.jpg" alt="SIMAHA Landing Page Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Landing
-                                                Page</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Student Association -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="studentassoc.jpg" alt="Student Association Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span
-                                                class="text-[10px] font-mono text-text-secondary uppercase">Associations
-                                                Index</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Faculty View -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="faculty.jpg" alt="Faculty Page Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Faculty
-                                                View</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- HIMAHI Detail -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="himahi.jpg" alt="HIMAHI Detail Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">HIMAHI
-                                                Detail</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Scholarships -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="scholar.jpg" alt="Scholarship Page Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span
-                                                class="text-[10px] font-mono text-text-secondary uppercase">Scholarships</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Achievements -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="achieve.jpg" alt="Achievements Page Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span
-                                                class="text-[10px] font-mono text-text-secondary uppercase">Achievements</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Events -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="event.jpg" alt="Events Page Wireframe"
-                                            class="w-full h-full object-cover object-top opacity-75 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Events
-                                                Calendar</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Placeholder for Alignment -->
-                                    <div
-                                        class="flex items-center justify-center border border-dashed border-border-color bg-bg-tertiary/50">
-                                        <span
-                                            class="text-[10px] font-mono text-text-secondary uppercase text-center p-4">Lo-Fi
-                                            Iterations<br>Complete</span>
-                                    </div>
-                                </div>
-
-                                <p class="mt-4 text-[10px] text-text-secondary italic">
-                                    *Wireframes created in Balsamiq to rapidly test information hierarchy before
-                                    high-fidelity visual design.
-                                </p>
-                            </div>
-
-                            <!-- Visual Design Gallery (Figma) -->
-                            <div class="mt-10 pt-8 border-t border-border-color">
-                                <strong class="text-swiss-red font-mono text-xs uppercase block mb-6">04. Visual Design
-                                    Phase (Figma Hi-Fi)</strong>
-                                <p class="text-sm text-text-secondary mb-6">
-                                    Translated the approved wireframes into high-fidelity prototypes using Figma. This
-                                    phase focused on applying the University's branding, refining typography, and
-                                    establishing a consistent visual language ("Figma Interpretation") that enhanced
-                                    usability and aesthetic appeal.
-                                </p>
-
-                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    <!-- Landing Page Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="landingpage.jpg" alt="SIMAHA Landing Page Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Landing
-                                                (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Student Association Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="studentassociationpage.jpg" alt="Student Association Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span
-                                                class="text-[10px] font-mono text-text-secondary uppercase">Associations
-                                                Index (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Faculty View Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="facultyofbusinesspage.jpg" alt="Faculty Page Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Faculty
-                                                View (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- HIMAHI Detail Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="himahipage.jpg" alt="HIMAHI Detail Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">HIMAHI
-                                                Detail (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Scholarships Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="scholarshipspage.jpg" alt="Scholarship Page Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span
-                                                class="text-[10px] font-mono text-text-secondary uppercase">Scholarships
-                                                (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Achievements Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="achievementpage.jpg" alt="Achievements Page Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span
-                                                class="text-[10px] font-mono text-text-secondary uppercase">Achievements
-                                                (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Events Hi-Fi -->
-                                    <div
-                                        class="group relative aspect-[3/4] overflow-hidden border border-border-color bg-bg-tertiary cursor-pointer hover:border-swiss-red transition-colors">
-                                        <img src="eventpage.jpg" alt="Events Page Hi-Fi"
-                                            class="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 transition-opacity">
-                                        <div
-                                            class="absolute bottom-0 left-0 w-full bg-bg-primary/90 py-2 px-3 border-t border-border-color">
-                                            <span class="text-[10px] font-mono text-text-secondary uppercase">Events
-                                                (Hi-Fi)</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Final Result Block -->
-                                    <div
-                                        class="flex items-center justify-center border border-dashed border-border-color bg-bg-tertiary/50">
-                                        <div class="text-center">
-                                            <span
-                                                class="text-[10px] font-mono text-swiss-red uppercase block mb-1">Status</span>
-                                            <span class="text-xs font-bold text-text-primary uppercase">Ready for
-                                                Handoff</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- Final Lifecycle Stages: Prototyping -> Testing -> Handoff -->
-                            <div class="mt-10 pt-8 border-t border-border-color">
-                                <div class="grid md:grid-cols-3 gap-8">
-                                    <!-- Stage 05 -->
-                                    <div>
-                                        <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">05.
-                                            Interactive Prototyping</strong>
-                                        <p class="text-sm text-text-secondary mb-3">
-                                            Utilized Figma's interactive components to simulate real user flows. Added
-                                            micro-interactions for hover states and navigation transitions to test
-                                            usability before code.
-                                        </p>
-                                        <div class="flex gap-2">
-                                            <span
-                                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Smart
-                                                Animate</span>
-                                            <span
-                                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">User
-                                                Flows</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Stage 06 -->
-                                    <div>
-                                        <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">06.
-                                            Testing & Iteration</strong>
-                                        <p class="text-sm text-text-secondary mb-3">
-                                            Conducted usability testing with student representatives and stakeholders.
-                                            Iterated on navigation labels and button placement based on direct feedback
-                                            loops.
-                                        </p>
-                                        <div class="flex gap-2">
-                                            <span
-                                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Usability
-                                                Testing</span>
-                                            <span
-                                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">A/B
-                                                Testing</span>
-                                        </div>
-                                    </div>
-
-                                    <!-- Stage 07 -->
-                                    <div>
-                                        <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">07.
-                                            Development Handoff</strong>
-                                        <p class="text-sm text-text-secondary mb-3">
-                                            Prepared comprehensive design specs, exported assets, and CSS snippets for
-                                            the development team, ensuring pixel-perfect implementation of the product
-                                            delivery.
-                                        </p>
-                                        <div class="flex gap-2">
-                                            <span
-                                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Design
-                                                Specs</span>
-                                            <span
-                                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Asset
-                                                Export</span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="pt-4 border-t border-border-color mt-8">
-                                <span class="font-mono text-[10px] text-text-secondary uppercase">
-                                    Full Cycle: Research → Objectives → Wireframing → Visual Design → Prototyping →
-                                    Testing → Handoff
-                                </span>
-                            </div>
+                    <!-- Final Result Block -->
+                    <div
+                        class="flex items-center justify-center border border-dashed border-border-color bg-bg-tertiary/50">
+                        <div class="text-center">
+                            <span class="text-[10px] font-mono text-swiss-red uppercase block mb-1">Status</span>
+                            <span class="text-xs font-bold text-text-primary uppercase">Ready for
+                                Handoff</span>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <!-- Final Lifecycle Stages: Prototyping -> Testing -> Handoff -->
+            <div class="mt-10 pt-8 border-t border-border-color">
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Stage 05 -->
+                    <div>
+                        <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">05.
+                            Interactive Prototyping</strong>
+                        <p class="text-sm text-text-secondary mb-3">
+                            Utilized Figma's interactive components to simulate real user flows. Added
+                            micro-interactions for hover states and navigation transitions to test
+                            usability before code.
+                        </p>
+                        <div class="flex gap-2">
+                            <span
+                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Smart
+                                Animate</span>
+                            <span
+                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">User
+                                Flows</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 06 -->
+                    <div>
+                        <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">06.
+                            Testing & Iteration</strong>
+                        <p class="text-sm text-text-secondary mb-3">
+                            Conducted usability testing with student representatives and stakeholders.
+                            Iterated on navigation labels and button placement based on direct feedback
+                            loops.
+                        </p>
+                        <div class="flex gap-2">
+                            <span
+                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Usability
+                                Testing</span>
+                            <span
+                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">A/B
+                                Testing</span>
+                        </div>
+                    </div>
+
+                    <!-- Stage 07 -->
+                    <div>
+                        <strong class="text-swiss-red font-mono text-xs uppercase block mb-3">07.
+                            Development Handoff</strong>
+                        <p class="text-sm text-text-secondary mb-3">
+                            Prepared comprehensive design specs, exported assets, and CSS snippets for
+                            the development team, ensuring pixel-perfect implementation of the product
+                            delivery.
+                        </p>
+                        <div class="flex gap-2">
+                            <span
+                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Design
+                                Specs</span>
+                            <span
+                                class="text-[10px] bg-bg-tertiary border border-border-color px-2 py-1 text-text-secondary">Asset
+                                Export</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pt-4 border-t border-border-color mt-8">
+                <span class="font-mono text-[10px] text-text-secondary uppercase">
+                    Full Cycle: Research → Objectives → Wireframing → Visual Design → Prototyping →
+                    Testing → Handoff
+                </span>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
 
         <div class="border-t border-border-color"></div>
