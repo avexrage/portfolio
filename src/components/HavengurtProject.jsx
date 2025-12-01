@@ -223,25 +223,7 @@ function HavengurtProject() {
                                 </div>
                             </div>
 
-                            {/* Figma Design Artifact */}
-                            <div className="p-6 bg-bg-tertiary border border-border-color">
-                                <h5 className="font-mono text-xs text-swiss-red mb-4 uppercase tracking-widest">
-                                    Process Artifacts
-                                </h5>
-                                <h4 className="font-display text-xl uppercase mb-4 text-text-primary">Visual Design</h4>
-                                <div className="border border-border-color">
-                                    <img
-                                        src="/havenfigma.png"
-                                        alt="Figma Visual Design Draft"
-                                        className="w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500"
-                                    />
-                                    <div className="bg-bg-tertiary p-2 border-t border-border-color">
-                                        <p className="font-mono text-[10px] text-center text-text-secondary uppercase tracking-widest">
-                                            Figure 1: Initial Figma Draft
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                 </div>
