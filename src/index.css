@@ -1,0 +1,111 @@
+/* CSS Variables for Theming */
+:root {
+  /* Default Dark Mode */
+  --bg-primary: #0F0F0F;
+  --bg-secondary: #141414;
+  --bg-tertiary: #151515;
+  --text-primary: #F5F5F5;
+  --text-secondary: #9CA3AF;
+  /* Gray-400 */
+  --border-color: #27272a;
+  /* Gray-800 roughly */
+  --accent-subtle: #1f2937;
+  /* Gray-800 */
+}
+
+[data-theme="light"] {
+  /* Light Mode Overrides */
+  --bg-primary: #FFFFFF;
+  --bg-secondary: #F3F4F6;
+  /* Gray-100 */
+  --bg-tertiary: #F9FAFB;
+  /* Gray-50 */
+  --text-primary: #111827;
+  /* Gray-900 */
+  --text-secondary: #4B5563;
+  /* Gray-600 */
+  --border-color: #E5E7EB;
+  /* Gray-200 */
+  --accent-subtle: #F3F4F6;
+  /* Gray-100 */
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  cursor: default;
+  margin: 0;
+  padding: 0;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #E63946;
+}
+
+/* Hover Reveal Animation for List Items */
+.project-item {
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-item:hover {
+  background-color: var(--bg-tertiary);
+  padding-left: 2rem;
+}
+
+.project-item:hover .arrow-icon {
+  transform: translateX(10px) rotate(-45deg);
+  color: #E63946;
+}
+
+.swiss-title {
+  line-height: 0.9;
+  letter-spacing: -0.02em;
+}
+
+/* Image hover zoom effect */
+.img-zoom-container {
+  overflow: hidden;
+}
+
+.img-zoom-container img {
+  transition: transform 0.7s ease;
+}
+
+.img-zoom-container:hover img {
+  transform: scale(1.05);
+}
+
+/* Academic Paper Style for Thesis */
+.academic-paper {
+  background-color: var(--bg-tertiary);
+  /* Dynamic background */
+  border-left: 4px solid #E63946;
+}
+
+/* Smooth transitions for theme switching */
+section,
+div,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+span,
+a {
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
