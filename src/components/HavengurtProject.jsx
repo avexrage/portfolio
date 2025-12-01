@@ -126,6 +126,18 @@ function HavengurtProject() {
                                         </p>
                                     </div>
                                 </div>
+                                <div className="mt-8 border border-border-color">
+                                    <img
+                                        src="/havenfigma.png"
+                                        alt="Figma Visual Design Draft"
+                                        className="w-full h-auto opacity-90 hover:opacity-100 transition-opacity duration-500"
+                                    />
+                                    <div className="bg-bg-tertiary p-2 border-t border-border-color">
+                                        <p className="font-mono text-[10px] text-center text-text-secondary uppercase tracking-widest">
+                                            Figure 1: Initial Figma Visual Design
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
 
                             {/* Design Methodology */}
