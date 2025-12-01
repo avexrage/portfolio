@@ -2,96 +2,94 @@ function About() {
     return (
         <section id="about" className="py-24 px-6 md:px-12 lg:px-24 bg-bg-secondary text-text-primary">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-16">
+                {/* Left Column */}
                 <div>
                     <div className="flex items-center gap-4 mb-8">
                         <span className="font-display text-swiss-red text-4xl font-bold">04</span>
                         <h2 className="font-serif italic text-4xl md:text-5xl">Statement of Intent</h2>
                     </div>
 
-                    <p className="text-lg leading-relaxed mb-8 font-light text-text-primary">
+                    <p className="text-lg leading-relaxed mb-6 font-light text-text-primary">
                         My professional philosophy is grounded in <strong className="font-bold">learning from the past while
-                            planning for the future</strong>. I actively invest time in seizing opportunities to create
-                        meaningful impact through technology.
+                            planning for the future</strong>. I actively invest time in seizing opportunities to create value.
                     </p>
 
-                    <p className="text-base text-text-secondary mb-10 leading-relaxed">
-                        One of my proudest outcomes is conceiving and birthing <strong className="text-text-primary">Havengurt</strong>,
-                        a direct-to-consumer platform that transformed my family's yogurt business into a scalable operation,
-                        securing a distribution deal with a local retail chain.
+                    <p className="text-lg leading-relaxed mb-16 font-light text-text-primary">
+                        I aim to bridge the gap between <strong className="font-bold">robust engineering</strong> and <strong className="font-bold">seamless user experience</strong>—a goal I intend to further at Politecnico di Milano.
                     </p>
 
-                    <div className="border-t border-border-color pt-10">
-                        <h3 className="font-display uppercase text-xl tracking-wider mb-6 text-text-primary">Core Competencies</h3>
-                        <div className="grid grid-cols-2 gap-y-4">
-                            <div className="space-y-1">
-                                <p className="text-swiss-red text-sm font-bold uppercase tracking-wide">Strategy</p>
-                                <p className="text-text-secondary text-sm">Product Roadmapping</p>
+                    {/* Education Section */}
+                    <div>
+                        <h3 className="font-display font-bold text-2xl uppercase mb-4 border-b-2 border-text-primary pb-2 inline-block">EDUCATION</h3>
+                        <div className="w-full border-b border-text-primary mb-8"></div>
+
+                        <div className="space-y-8">
+                            {/* University */}
+                            <div className="bg-bg-tertiary/30 p-4 -mx-4 rounded-sm">
+                                <div className="flex justify-between items-baseline mb-1">
+                                    <h4 className="font-bold text-xl text-text-primary">University of Technology Yogyakarta</h4>
+                                    <span className="font-mono text-xs text-text-secondary">2020 - 2024</span>
+                                </div>
+                                <p className="text-text-secondary mb-2">Bachelor Degree of Information System</p>
+                                <p className="font-mono text-xs text-text-secondary tracking-wide">Final Grade: 3.56 / 4.00</p>
                             </div>
-                            <div className="space-y-1">
-                                <p className="text-swiss-red text-sm font-bold uppercase tracking-wide">Execution</p>
-                                <p className="text-text-secondary text-sm">Agile Development</p>
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-swiss-red text-sm font-bold uppercase tracking-wide">Design</p>
-                                <p className="text-text-secondary text-sm">High-Fidelity Prototyping</p>
-                            </div>
-                            <div className="space-y-1">
-                                <p className="text-swiss-red text-sm font-bold uppercase tracking-wide">Research</p>
-                                <p className="text-text-secondary text-sm">User Testing & Validation</p>
+
+                            {/* Certification */}
+                            <div className="bg-bg-tertiary/30 p-4 -mx-4 rounded-sm">
+                                <div className="flex justify-between items-baseline mb-1">
+                                    <h4 className="font-bold text-xl text-text-primary">Google UX Design Professional</h4>
+                                    <span className="font-mono text-xs text-text-secondary">2025 - Current</span>
+                                </div>
+                                <p className="text-text-secondary mb-2">Coursera Professional Certification</p>
+                                <p className="font-mono text-xs text-text-secondary tracking-wide">Focus: IxD, Visual Design, Prototyping</p>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <div>
-                    <div className="flex items-center gap-4 mb-8">
-                        <span className="font-display text-swiss-red text-4xl font-bold">05</span>
-                        <h2 className="font-serif italic text-4xl md:text-5xl">Technical Stack</h2>
-                    </div>
-
-                    <div className="space-y-6">
-                        <div>
-                            <h4 className="font-display uppercase text-sm tracking-wider mb-3 text-text-secondary">Design Tools</h4>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Figma</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Canva</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Balsamiq</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 className="font-display uppercase text-sm tracking-wider mb-3 text-text-secondary">Development</h4>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">HTML/CSS</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">JavaScript</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">React</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Tailwind CSS</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 className="font-display uppercase text-sm tracking-wider mb-3 text-text-secondary">Methodologies</h4>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Waterfall</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">UI/UX Development Cycle</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Design Thinking</span>
-                            </div>
-                        </div>
-
-                        <div>
-                            <h4 className="font-display uppercase text-sm tracking-wider mb-3 text-text-secondary">Languages</h4>
-                            <div className="flex flex-wrap gap-2">
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Bahasa Indonesia (Native)</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">English (Professional)</span>
-                            </div>
+                {/* Right Column */}
+                <div className="pt-8">
+                    {/* Digital & Design */}
+                    <div className="mb-10">
+                        <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-text-secondary mb-4 border-b border-border-color pb-2">Digital & Design</h4>
+                        <div className="flex flex-wrap gap-3">
+                            {['Figma (Interactive Prototyping)', 'Visual Hierarchy', 'Design Systems', 'Canva', 'Digital Marketing'].map((skill) => (
+                                <span key={skill} className="px-4 py-2 rounded-full border border-text-primary text-text-primary text-sm font-medium hover:bg-text-primary hover:text-bg-primary transition-colors cursor-default">
+                                    {skill}
+                                </span>
+                            ))}
                         </div>
                     </div>
 
-                    <div className="mt-10 p-6 bg-bg-tertiary border-l-4 border-swiss-red">
-                        <p className="text-sm text-text-secondary italic">
-                            "I believe the best digital products emerge when technical feasibility, user empathy, and
-                            business viability converge. My goal is to join a program that values this intersection."
-                        </p>
+                    {/* Technical Engineering */}
+                    <div className="mb-10">
+                        <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-text-secondary mb-4 border-b border-border-color pb-2">Technical Engineering</h4>
+                        <div className="flex flex-wrap gap-3">
+                            {['Web Development (FE/BE)', 'Database Management', 'System Analysis', 'AI Workflow Orchestration'].map((skill) => (
+                                <span key={skill} className="px-4 py-2 rounded-full border border-text-primary text-text-primary text-sm font-medium hover:bg-text-primary hover:text-bg-primary transition-colors cursor-default">
+                                    {skill}
+                                </span>
+                            ))}
+                        </div>
+                    </div>
+
+                    {/* Languages */}
+                    <div>
+                        <h4 className="font-mono text-xs uppercase tracking-[0.2em] text-text-secondary mb-4 border-b border-border-color pb-2">Languages</h4>
+                        <div className="space-y-0 divide-y divide-border-color">
+                            <div className="flex justify-between items-center py-3">
+                                <span className="text-text-primary">Indonesian</span>
+                                <span className="bg-text-primary text-bg-primary text-xs font-bold px-2 py-1 rounded-sm">Native</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3">
+                                <span className="text-text-primary">English (Reading/Listening)</span>
+                                <span className="bg-text-primary text-bg-primary text-xs font-bold px-2 py-1 rounded-sm">C1</span>
+                            </div>
+                            <div className="flex justify-between items-center py-3">
+                                <span className="text-text-primary">English (Writing/Speaking)</span>
+                                <span className="bg-text-primary text-bg-primary text-xs font-bold px-2 py-1 rounded-sm">B2</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
