@@ -54,7 +54,7 @@ function About() {
                             <h4 className="font-display uppercase text-sm tracking-wider mb-3 text-text-secondary">Design Tools</h4>
                             <div className="flex flex-wrap gap-2">
                                 <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Figma</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Adobe XD</span>
+                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Canva</span>
                                 <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Balsamiq</span>
                             </div>
                         </div>
@@ -73,7 +73,7 @@ function About() {
                             <h4 className="font-display uppercase text-sm tracking-wider mb-3 text-text-secondary">Methodologies</h4>
                             <div className="flex flex-wrap gap-2">
                                 <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Waterfall</span>
-                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Agile/Scrum</span>
+                                <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">UI/UX Development Cycle</span>
                                 <span className="px-4 py-2 bg-bg-primary border border-border-color text-text-primary text-sm">Design Thinking</span>
                             </div>
                         </div>
